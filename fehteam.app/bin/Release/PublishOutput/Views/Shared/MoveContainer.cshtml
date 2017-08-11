@@ -1,0 +1,38 @@
+﻿<style type="text/css">
+    .move-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .move {
+        display: flex;
+        width: 30px;
+        height: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 5px;
+        border-radius: 3px;
+        background-color: #dddddd;
+        border: solid 2px #dddddd;
+        transition: all 1s ease;
+    }
+
+    .move-selected {
+        border-color: #333333;
+        background-color: #ffffff;
+    }
+</style>
+<div class="move-container">
+    @{
+        Dictionary<int, string> dictMove = fehteam.app.Bll.webcache.wiki.movetypes.ToDict();
+        int[] MoveSort = new int[] { 2, 1, 3, 4 };
+        foreach (int i in MoveSort)
+        {
+            if (dictMove.ContainsKey(i))
+            {
+                <div class="move" data-id="@i" style="background-image:url('/Content/Icons/Move @(dictMove[i]).png')"></div>
+            }
+        }
+    }
+</div>

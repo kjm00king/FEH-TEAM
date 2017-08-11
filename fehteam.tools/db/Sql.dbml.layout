@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Sql">
+  <DataContextMoniker Name="/SqlDataContext" />
+  <nestedChildShapes>
+    <classShape Id="e91db832-d99d-41a7-b8b9-34036ba40949" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SqlDataContext/Hero" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bf5add14-1b3f-4121-8df6-9e1aa301e916" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b8e565e4-cb39-4dbe-89c4-3bdadab0e009" absoluteBounds="3.75, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SqlDataContext/Weapon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a624b306-4d9e-48f0-a88b-6646110f8583" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a3049f4e-b236-43c5-b4a8-aca4e7bbb2e9" absoluteBounds="0.75, 3.75, 2, 3.1170068359375005">
+      <DataClassMoniker Name="/SqlDataContext/HeroEntity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="87da11d4-b0f3-4946-90e1-5a79e1c0f335" absoluteBounds="0.765, 4.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6232e5e5-77fc-4016-9208-4eb7b316d1f5" absoluteBounds="6.75, 0.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/SqlDataContext/KVType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bf40a183-d274-4011-95bf-ed41a52ea1a0" absoluteBounds="6.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cdb926aa-10f4-4d34-b0ce-302a084ecd14" absoluteBounds="6.875, 3.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/SqlDataContext/HeroDefWeapon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="340df60f-d3f2-4309-b288-c9b60db1f7cd" absoluteBounds="6.89, 3.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8c81c55f-4ad8-4aae-89ae-e069eae38f6a" absoluteBounds="4, 3.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/SqlDataContext/KV" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27bc1386-99ef-41d1-abef-f95cfb6b2c24" absoluteBounds="4.015, 4.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

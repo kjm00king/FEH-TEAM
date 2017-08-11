@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "FEH TEAM";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/css/f7")
+</head>
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-right panel-reveal">
+        <div class="content-block">
+        </div>
+    </div>
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                    <div class="center sliding" id="title"></div>
+                    <div class="right">
+                        <!--
+                          Right link contains only icon - additional "icon-only" class
+                          Additional "open-panel" class tells app to open panel when we click on this link
+                        -->
+                        <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                    <!-- Scrollable page content -->
+                    
+                </div>
+            </div>
+            <!-- Bottom Toolbar-->
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <!-- Toolbar links -->
+                    <a href="#" class="link save">保存</a>
+                    <a href="#" class="link load">载入</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*@Scripts.Render("~/jsre")
+    @Scripts.Render("~/script/f7")*@
+
+    <script src="/Scripts/jsre/lib/dat.gui.js"></script>
+    <script src="/Scripts/jsre/lib/jquery.1.7.js"></script>
+    <script src="/Scripts/jsre/lib/jquery.easing.1.3.js"></script>
+    <script src="/Scripts/jsre/init.js"></script>
+    <script src="/Scripts/jsre/core/action.js"></script>
+    <script src="/Scripts/jsre/core/event.js"></script>
+    <script src="/Scripts/framework7.min.js"></script>
+
+    @*Framework7*@
+    <script type="text/javascript">
+        // Initialize app
+        var myApp = new Framework7({
+            precompileTemplates: true,
+            modalTitle: 'Fhe Team',
+            material: true,
+        });
+
+        // If we need to use custom DOM library, let's save it to $$ variable:
+        var $$ = Dom7;
+
+        // Add view
+        var mainView = myApp.addView('.view-main', { });
+
+        myApp.showPreloader(); 
+
+    </script>
+
+</body>
+</html>

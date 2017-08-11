@@ -1,0 +1,645 @@
+﻿@{
+    ViewBag.Title = "FEH TEAM";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/css/f7")
+    <style type="text/css">
+        .icon-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team-hero, .team-hero-add {
+            width: 50px;
+            height: 50px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 10px;
+            margin: 5px;
+            background-repeat: no-repeat;
+        }
+
+        .team-hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .team-hero-add {
+            border: dashed 2px #2196f3;
+            width: 46px;
+            height: 46px;
+            background-color: #EEEEEE;
+        }
+
+        .team-hero-R3 {
+            background-color: rgba(184,115,51,0.5);
+        }
+
+        .team-hero-R4 {
+            background-color: rgba(192, 192, 192,0.5);
+        }
+
+        .team-hero-R5 {
+            background-color: rgba(255, 215, 0,0.5);
+        }
+
+        .team-hero .top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+            .team-hero .top i {
+                font-size: 12pt;
+                background-color: #ffffff;
+                border-radius: 8px;
+            }
+
+        .team-hero .bottom {
+            display: flex;
+            width: 100%;
+            height: 12px;
+            background-color: rgba(0,0,0,0);
+            color: #ffffff;
+            border-radius: 0px 0px 10px 10px;
+            font-size: 8pt;
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 1px 1px 1px black, 0 0 10px black, 0 0 10px black;
+        }
+
+        .hero-big-icon {
+            display: flex;
+            width: 100px;
+            height: 100px;
+            justify-content: center;
+            align-items: center;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 10px;
+            background-color: #DDD;
+        }
+
+        .weapon-contain, .move-contain, .hero-filter-contain {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .weapon, .move, .hero-filter-item {
+            display: flex;
+            width: 30px;
+            height: 30px;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 5px;
+            border-radius: 3px;
+            background-color: #dddddd;
+            border: solid 2px #dddddd;
+            transition: all 1s ease;
+        }
+
+        .weapon-selected, .move-selected {
+            border-color: #333333;
+            background-color: #ffffff;
+        }
+
+        .hero-filter-item {
+            width: 40px;
+            height: 40px;
+            background-size: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-right panel-reveal">
+        <div class="content-block">
+            <div class="hero-filter">
+                <div class="weapon-contain">
+                    @{
+                        Dictionary<int, string> dictWeapon = fehteam.app.Bll.webcache.wiki.weaponclasses.ToDict();
+                        int[] WeaponSort = new int[] { 2, 7, 12, 1, 6, 9, 3, 5, 10, 4, 8, 11 };
+                        foreach (int i in WeaponSort)
+                        {
+                            if (dictWeapon.ContainsKey(i))
+                            {
+                                <div class="weapon" data-id="@i" style="background-image:url('/Content/Icons/Class @(dictWeapon[i]).png')"></div>
+                            }
+                        }
+                    }
+                </div>
+                <br />
+                <div class="move-contain">
+                    @{
+                        Dictionary<int, string> dictMove = fehteam.app.Bll.webcache.wiki.movetypes.ToDict();
+                        int[] MoveSort = new int[] { 2, 1, 3, 4 };
+                        foreach (int i in MoveSort)
+                        {
+                            if (dictMove.ContainsKey(i))
+                            {
+                                <div class="move" data-id="@i" style="background-image:url('/Content/Icons/Move @(dictMove[i]).png')"></div>
+                            }
+                        }
+                    }
+                </div>
+                <br />
+                <div class="hero-filter-contain">
+                    @{
+                        foreach (fehteam.dal.Hero h in fehteam.app.Bll.webcache.wiki.heroes)
+                        {
+                            <div class="hero-filter-item"
+                                 data-id="@h.Id"
+                                 data-weapon="@h.WeaponClassId"
+                                 data-move="@h.MoveTypeId"
+                                 style="background-image:url('/Content/Wiki/@(h.Id).png')"></div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="hero-stats-change"></div>
+        </div>
+    </div>
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                    <div class="center sliding" id="title"></div>
+                    <div class="right">
+                        <!--
+                          Right link contains only icon - additional "icon-only" class
+                          Additional "open-panel" class tells app to open panel when we click on this link
+                        -->
+                        <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                    <!-- Scrollable page content -->
+                    <div class="page-content" style="background-color:#fafafa;">
+                        <div style="display:flex; flex-wrap:wrap; padding:10px; margin-bottom:50px;">
+                            <a href="#" class="link icon-only" onclick="add_hero()" id="btnAddTeamHero">
+                                <div class="team-hero-add icon-btn">
+                                    <i class="material-icons">add_circle_outline</i>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Toolbar-->
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <!-- Toolbar links -->
+                    <a href="#" class="link save">保存</a>
+                    <a href="#" class="link load">载入</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/jsre")
+    @Scripts.Render("~/script/f7")
+
+    @*HeroEntity*@
+    <script type="text/template7" id="HeroEntity">
+        <a href="#" class="open-panel link icon-only team-hero-box-{{id}}" onclick="mod_hero({{id}})">
+            <div class="team-hero team-hero-{{hr}}" style=" background-image:url(/Content/Wiki/{{hid}}.png)">
+                <div class="top">
+                    <div class="left">
+                        {{#if hasNoSet}}<i class="material-icons color-red">error</i>{{/if}}
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <div class="bottom">{{hl}}</div>
+            </div>
+        </a>
+    </script>
+
+    @*HeroEntityDetail*@
+    <script type="text/template7" id="HeroEntityDetail">
+        <div style="display:flex; justify-content:space-between;">
+            <div class="hero-big-icon" style=" background-image:url(/Content/Wiki/{{hid}}.png) "></div>
+            <svg width="100" height="100" style="border-radius:10px;">
+                <rect x="0" y="0" width="100" height="100" fill="#eeeeee"></rect>
+                <circle cx="50" cy="50" r="50" fill="#dddddd"></circle>
+                <path stroke="#000" stroke-width="2" fill="none" d="{{path}}"></path>
+            </svg>
+        </div>
+        <p class="buttons-row rarity">
+            {{#if hasR3}}<a href="#" class="button button-raised {{#js_compare "this.R == 3"}}button-fill{{/js_compare}}" data-v="3">R3</a>{{/if}}
+            {{#if hasR4}}<a href="#" class="button button-raised {{#js_compare "this.R == 4"}}button-fill{{/js_compare}}" data-v="4">R4</a>{{/if}}
+            <a href="#" class="button button-raised {{#js_compare "this.R == 5"}}button-fill{{/js_compare}}" data-v="5">R5</a>
+        </p>
+        <p class="buttons-row level">
+            <a href="#" class="button button-raised {{#js_compare "this.Lv == 1"}}button-fill{{/js_compare}}" data-v="1">Level 01</a>
+            <a href="#" class="button button-raised {{#js_compare "this.Lv == 40"}}button-fill{{/js_compare}}" data-v="40">Level 40</a>
+        </p>
+        <p class="buttons-row hp">
+            {{#if hasN}}<a href="#" class="button button-raised {{#js_compare "this.data[0] == 1"}}button-fill{{/js_compare}}" data-v="1">{{#n}}{{HP}}{{/n}}</a>{{/if}}
+            <a href="#" class="button button-raised {{#js_compare "this.data[0] == 2"}}button-fill{{/js_compare}}" data-v="2">{{#z}}{{HP}}{{/z}}</a>
+            {{#if hasP}}<a href="#" class="button button-raised {{#js_compare "this.data[0] == 3"}}button-fill{{/js_compare}}" data-v="3">{{#p}}{{HP}}{{/p}}</a>{{/if}}
+        </p>
+        <p class="buttons-row atk">
+            {{#if hasN}}<a href="#" class="button button-raised {{#js_compare "this.data[1] == 1"}}button-fill{{/js_compare}}" data-v="1">{{#n}}{{ATK}}{{/n}}</a>{{/if}}
+            <a href="#" class="button button-raised {{#js_compare "this.data[1] == 2"}}button-fill{{/js_compare}}" data-v="2">{{#z}}{{ATK}}{{/z}}</a>
+            {{#if hasP}}<a href="#" class="button button-raised {{#js_compare "this.data[1] == 3"}}button-fill{{/js_compare}}" data-v="3">{{#p}}{{ATK}}{{/p}}</a>{{/if}}
+        </p>
+        <p class="buttons-row spd">
+            {{#if hasN}}<a href="#" class="button button-raised {{#js_compare "this.data[2] == 1"}}button-fill{{/js_compare}}" data-v="1">{{#n}}{{SPD}}{{/n}}</a>{{/if}}
+            <a href="#" class="button button-raised {{#js_compare "this.data[2] == 2"}}button-fill{{/js_compare}}" data-v="2">{{#z}}{{SPD}}{{/z}}</a>
+            {{#if hasP}}<a href="#" class="button button-raised {{#js_compare "this.data[2] == 3"}}button-fill{{/js_compare}}" data-v="3">{{#p}}{{SPD}}{{/p}}</a>{{/if}}
+        </p>
+        <p class="buttons-row def">
+            {{#if hasN}}<a href="#" class="button button-raised {{#js_compare "this.data[3] == 1"}}button-fill{{/js_compare}}" data-v="1">{{#n}}{{DEF}}{{/n}}</a>{{/if}}
+            <a href="#" class="button button-raised {{#js_compare "this.data[3] == 2"}}button-fill{{/js_compare}}" data-v="2">{{#z}}{{DEF}}{{/z}}</a>
+            {{#if hasP}}<a href="#" class="button button-raised {{#js_compare "this.data[3] == 3"}}button-fill{{/js_compare}}" data-v="3">{{#p}}{{DEF}}{{/p}}</a>{{/if}}
+        </p>
+        <p class="buttons-row res">
+            {{#if hasN}}<a href="#" class="button button-raised {{#js_compare "this.data[4] == 1"}}button-fill{{/js_compare}}" data-v="1">{{#n}}{{RES}}{{/n}}</a>{{/if}}
+            <a href="#" class="button button-raised {{#js_compare "this.data[4] == 2"}}button-fill{{/js_compare}}" data-v="2">{{#z}}{{RES}}{{/z}}</a>
+            {{#if hasP}}<a href="#" class="button button-raised {{#js_compare "this.data[4] == 3"}}button-fill{{/js_compare}}" data-v="3">{{#p}}{{RES}}{{/p}}</a>{{/if}}
+        </p>
+        <p class="buttons-row">
+            <input id="input_heros_rarity" class="button button-raised button-fill" />
+            <input id="input_heros_level" class="button button-raised button-fill" />
+            <input id="input_heros_plus" class="button button-raised button-fill" />
+        </p>
+        {{#js_compare "this.mod == 'ADD'"}}
+        <p class="buttons-row">
+            <a href="#" class="button button-raised button-fill color-green icon-btn" onclick="add_hero_submit()">
+                <i class="material-icons">done</i>
+            </a>
+        </p>
+        {{/js_compare}}
+        {{#js_compare "this.mod == 'MOD'"}}
+        <p class="buttons-row">
+            <a href="#" class="button button-raised button-fill color-green icon-btn" onclick="mod_hero_submit()">
+                <i class="material-icons">save</i>
+            </a>
+            <a href="#" class="button button-raised button-fill color-red icon-btn" onclick="del_hero({{id}})">
+                <i class="material-icons">delete</i>
+            </a>
+        </p>
+        {{/js_compare}}
+    </script>
+
+    @*Framework7*@
+    <script type="text/javascript">
+        // Initialize app
+        var myApp = new Framework7({
+            precompileTemplates: true,
+            modalTitle: 'Fhe Team',
+            material: true,
+        });
+
+        // If we need to use custom DOM library, let's save it to $$ variable:
+        var $$ = Dom7;
+
+        // Add view
+        var mainView = myApp.addView('.view-main', {});
+
+    </script>
+
+    @*MyJs*@
+    <script type="text/javascript">
+
+        function setTitle(key) { $("#title").text("FEH TEAM" + (key != "" ? "  (" + key + ")" : "")); }
+        setTitle("@fehteam.app.Bll.session.GetUserData(Context).Key");
+
+        var mapHS = @Html.Raw(CML.ComUtility.ToJson(fehteam.app.Bll.webcache.wiki.stats));
+
+        var myData = { Team:[] };
+
+        var evGetHeroes = new JSRE.core.action("/FehTeam/GetHeroes")
+            .bind("success", function (data) {
+                myData = data;
+                renderTeamHeroes();
+            })
+            .bind("alert", function (msg) { myApp.alert(msg, "Error"); })
+            .bind("begin", function (data) { myApp.showIndicator(); })
+            .bind("complete", function (data) { myApp.hideIndicator(); });
+
+        var evSave = new JSRE.core.action("/FehTeam/Save")
+            .bind("success", function (data) {
+                setTitle(data);
+                myApp.alert("Your key is " + data, "Save Success");
+            })
+            .bind("alert", function (msg) { myApp.alert(msg, "Error"); })
+            .bind("begin", function (data) { myApp.showIndicator(); })
+            .bind("complete", function (data) { myApp.hideIndicator(); });
+        $(".save").on("click", function () { evSave.action(); })
+
+        var evLoad = new JSRE.core.action("/FehTeam/Load")
+            .bind("success", function (data) {
+                setTitle(data);
+                evGetHeroes.action();
+            })
+            .bind("alert", function (msg) { myApp.alert(msg, "Error"); })
+            .bind("begin", function (data) { myApp.showIndicator(); })
+            .bind("complete", function (data) { myApp.hideIndicator(); });
+        $(".load").on("click", function () {
+            myApp.prompt('Please input your key', function (data) {
+                evLoad.post(data);
+            });
+        })
+
+        var evAddHeroes = new JSRE.core.action("/FehTeam/AddHero")
+            .bind("success", function (data) {
+                $("#btnAddTeamHero").before(htmlHeroEntity(data));
+                myData.Team.push(data);
+            })
+            .bind("alert", function (msg) {
+                myApp.alert(msg, "Error");
+                evGetHeroes.action();
+            })
+            .bind("begin", function (data) { myApp.showIndicator(); })
+            .bind("complete", function (data) { myApp.hideIndicator(); });
+
+        var evModHeroes = new JSRE.core.action("/FehTeam/ModHero")
+            .bind("success", function (data) {
+
+                myApp.closePanel();
+
+                var query = myData.Team.filter(function (x) { return x.id == data.id; });
+                if (query.length > 0) {
+                    var n = myData.Team.indexOf(query[0]);
+                    myData.Team.splice(n, 1, data);
+                }
+
+                var dom = $(".team-hero-box-" + data.id);
+                dom.before(htmlHeroEntity(data));
+                dom.remove();
+            })
+            .bind("alert", function (msg) {
+                myApp.alert(msg, "Error");
+                evGetHeroes.action();
+            })
+            .bind("begin", function (data) { myApp.showIndicator(); })
+            .bind("complete", function (data) { myApp.hideIndicator(); });
+
+
+        var evDelHeroes = new JSRE.core.action("/FehTeam/DelHero")
+            .bind("success", function (data) {
+
+                myApp.closePanel();
+
+                var query = myData.Team.filter(function (x) { return x.id == data.id; });
+                if (query.length > 0) {
+                    var n = myData.Team.indexOf(query[0]);
+                    myData.Team.splice(n, 1);
+                }
+
+                var dom = $(".team-hero-box-" + data.id);
+                dom.remove();
+            })
+            .bind("alert", function (msg) {
+                myApp.alert(msg, "Error");
+                evGetHeroes.action();
+            })
+            .bind("begin", function (data) { myApp.showIndicator(); })
+            .bind("complete", function (data) { myApp.hideIndicator(); });
+
+        function add_hero() {
+            myApp.openPanel("right");
+            showHeroFilter();
+            $(".panel-right").scrollTop(0);
+        }
+
+        $(".weapon").on("click", function (e) {
+            select("weapon", e.target);
+            filterHeroes();
+        });
+
+        $(".move").on("click", function (e) {
+            select("move", e.target);
+            filterHeroes();
+        });
+
+        function select(name, ele) {
+
+                if ($("." + name + "-selected").length > 0 && $(ele).data().id == $("." + name + "-selected").data().id) {
+                $("." + name).removeClass(name + "-selected");
+            }
+            else {
+                $("." + name).removeClass(name + "-selected");
+                $(ele).addClass(name + "-selected");
+            }
+        }
+
+        function filterHeroes() {
+
+            if ($(".weapon-selected").length > 0) {
+                $("[data-weapon=" + $(".weapon-selected").data().id + "]", $(".hero-filter-contain")).show();
+                $("[data-weapon!=" + $(".weapon-selected").data().id + "]", $(".hero-filter-contain")).hide();
+            }
+            else {
+                $(".hero-filter-item").show();
+            }
+
+            if ($(".move-selected").length > 0) {
+                $("[data-move!=" + $(".move-selected").data().id + "]", $(".hero-filter-contain")).hide();
+            }
+            $(".panel-right").css("display", "flex");
+        }
+
+        var fHS = {};
+
+        $(".hero-filter-item").on("click", function (e) {
+            showHeroStatsChange();
+
+            fHS = {
+                id: 0,
+                hid: $(e.target).data().id,
+                tmp: mapHS.filter(function (x) { return x.HeroId == $(e.target).data().id; }),
+                hasR3: 0,
+                hasR4: 0,
+                R: 5,
+                Lv: 1,
+                n: [],
+                z: [],
+                p: [],
+                data: [0, 0, 0, 0, 0],
+                Hr: "R3",
+                Hl: "Lv1",
+                Hp: "+0",
+                mod: 'ADD',
+                minR: 1,
+            };
+            fHS.hasR3 = fHS.tmp.filter(function (x) { return x.Rarity == 3; }).length > 0;
+            fHS.hasR4 = fHS.tmp.filter(function (x) { return x.Rarity == 4; }).length > 0;
+            if (!fHS.hasR3) { fHS.minR = 4; fHS.Hr = "R4"; }
+            if (!fHS.hasR4) { fHS.minR = 5; fHS.Hr = "R5"; }
+            renderHeroStat();
+        });
+
+        function renderHeroStat() {
+
+            fHS.n = fHS.tmp.filter(function (x) { return x.Rarity == fHS.R && x.Level == fHS.Lv && x.Variation < 0; });
+            fHS.z = fHS.tmp.filter(function (x) { return x.Rarity == fHS.R && x.Level == fHS.Lv && x.Variation == 0; });
+            fHS.p = fHS.tmp.filter(function (x) { return x.Rarity == fHS.R && x.Level == fHS.Lv && x.Variation > 0; });
+            fHS.hasN = fHS.n.length > 0;
+            fHS.hasP = fHS.p.length > 0;
+            if (!fHS.hasN) { fHS.n = fHS.z; }
+            if (!fHS.hasP) { fHS.p = fHS.z; }
+
+            fHS.path = "M " + 50 + " " + (50 - 15 * fHS.data[0])
+                + "L " + (50 - Math.cos(Math.PI / 10) * 15 * fHS.data[1]) + " " + (50 - Math.sin(Math.PI / 10) * 15 * fHS.data[1])
+                + "L " + (50 - Math.sin(Math.PI / 5) * 15 * fHS.data[3]) + " " + (50 + Math.cos(Math.PI / 5) * 15 * fHS.data[3])
+                + "L " + (50 + Math.sin(Math.PI / 5) * 15 * fHS.data[4]) + " " + (50 + Math.cos(Math.PI / 5) * 15 * fHS.data[4])
+                + "L " + (50 + Math.cos(Math.PI / 10) * 15 * fHS.data[2]) + " " + (50 - Math.sin(Math.PI / 10) * 15 * fHS.data[2])
+                     + "Z";
+
+            $(".hero-stats-change").html(Template7.templates.HeroEntityDetail(fHS));
+
+            $(".rarity > a").on("click", function (e) { setFHSbyDOM(); fHS.R = $(e.target).data().v; renderHeroStat(); });
+            $(".level > a").on("click", function (e) { setFHSbyDOM(); fHS.Lv = $(e.target).data().v; renderHeroStat(); });
+            $(".hp > a").on("click", function (e) { fHS.data[0] = $(e.target).data().v; setFHSbyDOM(); renderHeroStat(); });
+            $(".atk > a").on("click", function (e) { fHS.data[1] = $(e.target).data().v; setFHSbyDOM(); renderHeroStat(); });
+            $(".spd > a").on("click", function (e) { fHS.data[2] = $(e.target).data().v; setFHSbyDOM(); renderHeroStat(); });
+            $(".def > a").on("click", function (e) { fHS.data[3] = $(e.target).data().v; setFHSbyDOM(); renderHeroStat(); });
+            $(".res > a").on("click", function (e) { fHS.data[4] = $(e.target).data().v; setFHSbyDOM(); renderHeroStat(); });
+
+            initPicker();
+        }
+
+        function renderTeamHeroes() {
+            $("#btnAddTeamHero").prevAll().remove();
+            $.each(myData.Team, function (i, v) {
+                $("#btnAddTeamHero").before(htmlHeroEntity(v));
+            });
+        }
+
+        evGetHeroes.action();
+
+        function mod_hero(id) {
+            showHeroStatsChange();
+
+            var query = myData.Team.filter(function (x) { return x.id == id; });
+            if (query.length > 0) {
+                fHS = {
+                    id: id,
+                    hid: query[0].hid,
+                    tmp: mapHS.filter(function (x) { return x.HeroId == query[0].hid; }),
+                    hasR3: 0,
+                    hasR4: 0,
+                    R: query[0].r,
+                    Lv: query[0].lv,
+                    n: [],
+                    z: [],
+                    p: [],
+                    Hr: query[0].hr,
+                    Hl: query[0].hl,
+                    Hp: query[0].hp,
+                    data: query[0].var,
+                    mod: 'MOD',
+                    minR: 1,
+                };
+                fHS.hasR3 = fHS.tmp.filter(function (x) { return x.Rarity == 3; }).length > 0;
+                fHS.hasR4 = fHS.tmp.filter(function (x) { return x.Rarity == 4; }).length > 0;
+                if (!fHS.hasR3) { fHS.minR = 4; }
+                if (!fHS.hasR4) { fHS.minR = 5; }
+                renderHeroStat();
+            }
+            else
+                myApp.alert("NO FOUND!", "Error");
+        }
+
+        function del_hero(id) {
+            myApp.confirm('Are you sure delete this hero?', function () {
+                evDelHeroes.post(id);
+            });
+        }
+
+        function initPicker() {
+
+            var rValueArray = [];
+            for (var i = fHS.minR; i <= 5; i++) { rValueArray.push("R" + i); }
+            myApp.picker({ input: '#input_heros_rarity', value: [fHS.Hr], cols: [{ textAlign: 'center', values: rValueArray, width:"100%" }] });
+
+            var lValueArray = [];
+            for (var i = 40; i > 0; i--) { lValueArray.push("Lv" + i); }
+            myApp.picker({ input: '#input_heros_level', value: [fHS.Hl], cols: [{ textAlign: 'center', values: lValueArray, width: "100%" }] });
+
+            var pValueArray = [];
+            for (var i = 0; i <= 10; i++) { pValueArray.push("+" + i); }
+            myApp.picker({ input: '#input_heros_plus', value: [fHS.Hp], cols: [{ textAlign: 'center', values: pValueArray , width:"100%"}] });
+        }
+
+        function showHeroStatsChange() {
+            $(".hero-filter").hide();
+            $(".hero-stats-change").show();
+        }
+
+        function showHeroFilter() { $(".hero-filter").show(); $(".hero-stats-change").hide(); }
+
+        function setFHSbyDOM() {
+            fHS.Hr = $('#input_heros_rarity').val();
+            fHS.Hl = $('#input_heros_level').val();
+            fHS.Hp = $('#input_heros_plus').val();
+        }
+
+        function getSubmitObj() {
+            return {
+                id: fHS.id,
+                hid: fHS.hid,
+                r: fHS.R,
+                lv: fHS.Lv,
+                var: fHS.data,
+                hr: fHS.Hr,
+                hl: fHS.Hl,
+                hp: fHS.Hp,
+            };
+        }
+
+        function htmlHeroEntity(data) {
+            data.hasNoSet = data.var.indexOf(0) >= 0;
+            return Template7.templates.HeroEntity(data);
+        }
+
+        function add_hero_submit() {
+            setFHSbyDOM();
+            evAddHeroes.post(getSubmitObj());
+            myApp.closePanel();
+        }
+
+        function mod_hero_submit() {
+            setFHSbyDOM();
+            evModHeroes.post(getSubmitObj());
+        }
+
+        function mod_hero_cancel() { myApp.closePanel(); }
+
+    </script>
+
+</body>
+</html>

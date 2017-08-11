@@ -1,0 +1,110 @@
+﻿@*HeroEntityDetail*@
+<style type="text/css">
+    .hero-big-icon {
+        display: flex;
+        width: 100px;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 10px;
+        background-color: #DDD;
+    }
+    .rarity, .level, .equipment, .hp, .atk, .spd, .def, .res {
+        margin: 10px 0px 0px 0px;
+    }
+</style>
+<script type="text/template7" id="HeroEntityDetail">
+    <div style="display:flex; justify-content:space-between;">
+        <div class="hero-big-icon" style=" background-image:url(/Content/Wiki/{{hid}}.png) "></div>
+        <svg width="100" height="100" style="border-radius:10px;">
+            <rect x="0" y="0" width="100" height="100" fill="#eeeeee"></rect>
+            <circle cx="50" cy="50" r="50" fill="#dddddd"></circle>
+            <path stroke="#000" stroke-width="2" fill="none" d="{{path}}"></path>
+        </svg>
+    </div>
+    <p class="buttons-row rarity">
+        {{#if hasR3}}<a href="#" class="button button-raised {{#js_compare "this.R == 3"}}button-fill{{/js_compare}}" data-v="3">R3</a>{{/if}}
+        {{#if hasR4}}<a href="#" class="button button-raised {{#js_compare "this.R == 4"}}button-fill{{/js_compare}}" data-v="4">R4</a>{{/if}}
+        <a href="#" class="button button-raised {{#js_compare "this.R == 5"}}button-fill{{/js_compare}}" data-v="5">R5</a>
+    </p>
+    <p class="buttons-row level">
+        <a href="#" class="button button-raised {{#js_compare "this.Lv == 1"}}button-fill{{/js_compare}}" data-v="1">Level 01</a>
+        <a href="#" class="button button-raised {{#js_compare "this.Lv == 40"}}button-fill{{/js_compare}}" data-v="40">Level 40</a>
+    </p>
+    <p class="buttons-row equipment">
+        <a href="#" class="button button-raised {{#js_compare "this.Equip == 1"}}button-fill{{/js_compare}}" data-v="1">Equip</a>
+        <a href="#" class="button button-raised {{#js_compare "this.Equip == 0"}}button-fill{{/js_compare}}" data-v="0">No Equip</a>
+    </p>
+    <p class="buttons-row hp">
+        {{#if hasN}}<a href="#" class="button button-raised {{#js_compare "this.data[0] == 1"}}button-fill{{/js_compare}}" data-v="1">{{#n}}{{HP}}{{/n}}</a>{{/if}}
+        <a href="#" class="button button-raised {{#js_compare "this.data[0] == 2"}}button-fill{{/js_compare}}" data-v="2">{{#z}}{{HP}}{{/z}}</a>
+        {{#if hasP}}<a href="#" class="button button-raised {{#js_compare "this.data[0] == 3"}}button-fill{{/js_compare}}" data-v="3">{{#p}}{{HP}}{{/p}}</a>{{/if}}
+    </p>
+    <p class="buttons-row atk">
+        {{#if hasN}}
+            <a href="#" class="button button-raised {{#js_compare "this.data[1] == 1"}}button-fill{{/js_compare}}" data-v="1">
+                {{js "this.n[0].ATK + this.Equip * this.n[0].W_ATK"}}
+            </a>
+        {{/if}}
+        <a href="#" class="button button-raised {{#js_compare "this.data[1] == 2"}}button-fill{{/js_compare}}" data-v="2">
+            {{js "this.z[0].ATK + this.Equip * this.z[0].W_ATK"}}
+        </a>
+        {{#if hasP}}
+            <a href="#" class="button button-raised {{#js_compare "this.data[1] == 3"}}button-fill{{/js_compare}}" data-v="3">
+                {{js "this.p[0].ATK + this.Equip * this.p[0].W_ATK"}}
+            </a>
+        {{/if}}
+    </p>
+    <p class="buttons-row spd">
+        {{#if hasN}}
+            <a href="#" class="button button-raised {{#js_compare "this.data[2] == 1"}}button-fill{{/js_compare}}" data-v="1">
+                {{js "Math.max(0, this.n[0].SPD + this.Equip * this.n[0].W_SPD)"}}
+            </a>
+        {{/if}}
+        <a href="#" class="button button-raised {{#js_compare "this.data[2] == 2"}}button-fill{{/js_compare}}" data-v="2">
+            {{js "this.z[0].SPD + this.Equip * this.z[0].W_SPD"}}
+        </a>
+        {{#if hasP}}
+            <a href="#" class="button button-raised {{#js_compare "this.data[2] == 3"}}button-fill{{/js_compare}}" data-v="3">
+                {{js "this.p[0].SPD + this.Equip * this.p[0].W_SPD"}}
+            </a>
+        {{/if}}
+    </p>
+    <p class="buttons-row def">
+        {{#if hasN}}<a href="#" class="button button-raised {{#js_compare "this.data[3] == 1"}}button-fill{{/js_compare}}" data-v="1">{{#n}}{{DEF}}{{/n}}</a>{{/if}}
+        <a href="#" class="button button-raised {{#js_compare "this.data[3] == 2"}}button-fill{{/js_compare}}" data-v="2">{{#z}}{{DEF}}{{/z}}</a>
+        {{#if hasP}}<a href="#" class="button button-raised {{#js_compare "this.data[3] == 3"}}button-fill{{/js_compare}}" data-v="3">{{#p}}{{DEF}}{{/p}}</a>{{/if}}
+    </p>
+    <p class="buttons-row res">
+        {{#if hasN}}<a href="#" class="button button-raised {{#js_compare "this.data[4] == 1"}}button-fill{{/js_compare}}" data-v="1">{{#n}}{{RES}}{{/n}}</a>{{/if}}
+        <a href="#" class="button button-raised {{#js_compare "this.data[4] == 2"}}button-fill{{/js_compare}}" data-v="2">{{#z}}{{RES}}{{/z}}</a>
+        {{#if hasP}}<a href="#" class="button button-raised {{#js_compare "this.data[4] == 3"}}button-fill{{/js_compare}}" data-v="3">{{#p}}{{RES}}{{/p}}</a>{{/if}}
+    </p>
+    <p class="buttons-row">
+        <input id="input_heros_rarity" class="button button-raised button-fill" />
+        <input id="input_heros_level" class="button button-raised button-fill" />
+        <input id="input_heros_plus" class="button button-raised button-fill" />
+    </p>
+    {{#js_compare "this.mod == 'ADD'"}}
+    <p class="buttons-row">
+        <a href="#" class="button button-raised button-fill color-green icon-btn" onclick="add_hero()">
+            <i class="material-icons">done</i>
+        </a>
+    </p>
+    {{/js_compare}}
+    {{#js_compare "this.mod == 'MOD'"}}
+    <p class="buttons-row">
+        <a href="#" class="button button-raised button-fill color-green icon-btn" onclick="mod_hero()">
+            <i class="material-icons">save</i>
+        </a>
+        {{#js this.conf.hasDel}}
+        <a href="#" class="button button-raised button-fill color-red icon-btn" onclick="del_hero({{id}})">
+            <i class="material-icons">delete</i>
+        </a>
+        {{/js}}
+    </p>
+    {{/js_compare}}
+</script>

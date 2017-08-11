@@ -1,0 +1,9 @@
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.wiki\bin\Debug\fehteam.wiki.dll
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.wiki\bin\Debug\fehteam.wiki.pdb
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.wiki\obj\Debug\fehteam.wiki.dll
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.wiki\obj\Debug\fehteam.wiki.pdb
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.wiki\obj\Debug\fehteam.wiki.csprojResolveAssemblyReference.cache
+D:\Work\[2017.8]FEHWiki\src\github\fehteam.wiki\bin\Debug\fehteam.wiki.dll
+D:\Work\[2017.8]FEHWiki\src\github\fehteam.wiki\bin\Debug\fehteam.wiki.pdb
+D:\Work\[2017.8]FEHWiki\src\github\fehteam.wiki\obj\Debug\fehteam.wiki.dll
+D:\Work\[2017.8]FEHWiki\src\github\fehteam.wiki\obj\Debug\fehteam.wiki.pdb

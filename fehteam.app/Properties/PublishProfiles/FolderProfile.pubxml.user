@@ -1,0 +1,971 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_NewBackgroundProfile>True</_NewBackgroundProfile>
+    <_PublishTargetUrl>D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.app\bin\Release\PublishOutput</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>08/04/2017 17:46:37</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/22/2013 08:43:40</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>08/04/2017 17:46:37</publishTime>
+    </File>
+    <File Include="bin/CML.dll">
+      <publishTime>08/09/2017 00:31:35</publishTime>
+    </File>
+    <File Include="bin/fehteam.app.dll">
+      <publishTime>08/11/2017 11:22:35</publishTime>
+    </File>
+    <File Include="bin/fehteam.dal.dll">
+      <publishTime>08/11/2017 11:22:27</publishTime>
+    </File>
+    <File Include="bin/fehteam.wiki.dll">
+      <publishTime>08/11/2017 11:22:27</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>11/30/2016 16:07:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>12/07/2016 11:45:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>12/07/2016 11:50:34</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>12/06/2016 15:15:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>12/07/2016 11:49:10</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>12/07/2016 11:50:34</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>12/06/2016 15:09:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>12/13/2016 03:10:32</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>01/05/2012 11:08:46</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>08/05/2017 00:04:43</publishTime>
+    </File>
+    <File Include="bin/PMT.RE.dll">
+      <publishTime>08/10/2017 18:11:30</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/28/2015 04:02:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>02/11/2014 15:26:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/28/2015 04:02:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>09/10/2013 17:28:38</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>08/04/2017 17:46:28</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>08/04/2017 17:46:28</publishTime>
+    </File>
+    <File Include="Content/font-material-icons.css">
+      <publishTime>08/06/2017 16:28:47</publishTime>
+    </File>
+    <File Include="Content/font-roboto.css">
+      <publishTime>08/06/2017 16:28:47</publishTime>
+    </File>
+    <File Include="Content/framework7.material.colors.css">
+      <publishTime>08/06/2017 16:28:47</publishTime>
+    </File>
+    <File Include="Content/framework7.material.css">
+      <publishTime>08/06/2017 16:28:47</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Blue Breath.png">
+      <publishTime>08/04/2017 14:53:34</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Blue Lance.png">
+      <publishTime>08/04/2017 14:53:32</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Blue Tome.png">
+      <publishTime>08/04/2017 14:53:33</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Green Axe.png">
+      <publishTime>08/04/2017 14:53:32</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Green Breath.png">
+      <publishTime>08/04/2017 14:53:35</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Green Tome.png">
+      <publishTime>08/04/2017 14:53:33</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Neutral Bow.png">
+      <publishTime>08/04/2017 14:53:34</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Neutral Dagger.png">
+      <publishTime>08/04/2017 14:53:35</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Neutral Staff.png">
+      <publishTime>08/04/2017 14:53:32</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Red Breath.png">
+      <publishTime>08/04/2017 14:53:42</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Red Sword.png">
+      <publishTime>08/04/2017 14:53:32</publishTime>
+    </File>
+    <File Include="Content/Icons/Class Red Tome.png">
+      <publishTime>08/04/2017 14:53:33</publishTime>
+    </File>
+    <File Include="Content/Icons/Move Armored.png">
+      <publishTime>08/04/2017 14:53:34</publishTime>
+    </File>
+    <File Include="Content/Icons/Move Cavalry.png">
+      <publishTime>08/04/2017 14:53:32</publishTime>
+    </File>
+    <File Include="Content/Icons/Move Flying.png">
+      <publishTime>08/04/2017 14:53:33</publishTime>
+    </File>
+    <File Include="Content/Icons/Move Infantry.png">
+      <publishTime>08/04/2017 14:53:32</publishTime>
+    </File>
+    <File Include="Content/Icons/Rarity_3.png">
+      <publishTime>08/07/2017 18:15:03</publishTime>
+    </File>
+    <File Include="Content/Icons/Rarity_4.png">
+      <publishTime>08/07/2017 18:14:53</publishTime>
+    </File>
+    <File Include="Content/Icons/Rarity_5.png">
+      <publishTime>08/07/2017 18:14:47</publishTime>
+    </File>
+    <File Include="Content/img/i-f7-ios.png">
+      <publishTime>08/08/2017 10:44:00</publishTime>
+    </File>
+    <File Include="Content/img/i-f7-material.png">
+      <publishTime>08/08/2017 10:44:00</publishTime>
+    </File>
+    <File Include="Content/img/icon.png">
+      <publishTime>08/08/2017 10:44:00</publishTime>
+    </File>
+    <File Include="Content/img/lightmap-ao-shadow.png">
+      <publishTime>08/08/2017 10:44:00</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/animated-overlay.gif">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-icons_222222_256x240.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-icons_454545_256x240.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-icons_888888_256x240.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/images/vssver2.scc">
+      <publishTime>08/09/2017 17:10:26</publishTime>
+    </File>
+    <File Include="Content/jquery-ui/jquery-ui.css">
+      <publishTime>08/09/2017 17:10:23</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>08/04/2017 17:46:23</publishTime>
+    </File>
+    <File Include="Content/tabulator.css">
+      <publishTime>08/09/2017 15:51:19</publishTime>
+    </File>
+    <File Include="Content/tabulator_site.css">
+      <publishTime>08/09/2017 15:51:25</publishTime>
+    </File>
+    <File Include="Content/Users/default.data">
+      <publishTime>08/08/2017 00:35:35</publishTime>
+    </File>
+    <File Include="Content/Wiki/1.png">
+      <publishTime>08/06/2017 13:11:51</publishTime>
+    </File>
+    <File Include="Content/Wiki/10.png">
+      <publishTime>08/06/2017 13:11:59</publishTime>
+    </File>
+    <File Include="Content/Wiki/100.png">
+      <publishTime>08/06/2017 13:42:51</publishTime>
+    </File>
+    <File Include="Content/Wiki/101.png">
+      <publishTime>08/06/2017 13:42:53</publishTime>
+    </File>
+    <File Include="Content/Wiki/102.png">
+      <publishTime>08/06/2017 13:42:55</publishTime>
+    </File>
+    <File Include="Content/Wiki/103.png">
+      <publishTime>08/06/2017 13:42:56</publishTime>
+    </File>
+    <File Include="Content/Wiki/104.png">
+      <publishTime>08/06/2017 13:42:58</publishTime>
+    </File>
+    <File Include="Content/Wiki/105.png">
+      <publishTime>08/06/2017 13:43:00</publishTime>
+    </File>
+    <File Include="Content/Wiki/106.png">
+      <publishTime>08/06/2017 13:43:02</publishTime>
+    </File>
+    <File Include="Content/Wiki/107.png">
+      <publishTime>08/06/2017 13:43:04</publishTime>
+    </File>
+    <File Include="Content/Wiki/108.png">
+      <publishTime>08/06/2017 13:43:05</publishTime>
+    </File>
+    <File Include="Content/Wiki/109.png">
+      <publishTime>08/06/2017 13:43:07</publishTime>
+    </File>
+    <File Include="Content/Wiki/11.png">
+      <publishTime>08/06/2017 13:12:00</publishTime>
+    </File>
+    <File Include="Content/Wiki/110.png">
+      <publishTime>08/06/2017 13:43:09</publishTime>
+    </File>
+    <File Include="Content/Wiki/111.png">
+      <publishTime>08/06/2017 13:43:11</publishTime>
+    </File>
+    <File Include="Content/Wiki/112.png">
+      <publishTime>08/06/2017 13:43:13</publishTime>
+    </File>
+    <File Include="Content/Wiki/113.png">
+      <publishTime>08/06/2017 13:43:14</publishTime>
+    </File>
+    <File Include="Content/Wiki/114.png">
+      <publishTime>08/06/2017 13:43:16</publishTime>
+    </File>
+    <File Include="Content/Wiki/115.png">
+      <publishTime>08/06/2017 13:43:18</publishTime>
+    </File>
+    <File Include="Content/Wiki/116.png">
+      <publishTime>08/06/2017 13:43:20</publishTime>
+    </File>
+    <File Include="Content/Wiki/117.png">
+      <publishTime>08/06/2017 13:43:22</publishTime>
+    </File>
+    <File Include="Content/Wiki/118.png">
+      <publishTime>08/06/2017 13:43:23</publishTime>
+    </File>
+    <File Include="Content/Wiki/119.png">
+      <publishTime>08/06/2017 13:43:25</publishTime>
+    </File>
+    <File Include="Content/Wiki/12.png">
+      <publishTime>08/06/2017 13:12:01</publishTime>
+    </File>
+    <File Include="Content/Wiki/120.png">
+      <publishTime>08/06/2017 13:43:27</publishTime>
+    </File>
+    <File Include="Content/Wiki/121.png">
+      <publishTime>08/06/2017 13:43:29</publishTime>
+    </File>
+    <File Include="Content/Wiki/122.png">
+      <publishTime>08/06/2017 13:43:31</publishTime>
+    </File>
+    <File Include="Content/Wiki/123.png">
+      <publishTime>08/06/2017 13:43:32</publishTime>
+    </File>
+    <File Include="Content/Wiki/124.png">
+      <publishTime>08/06/2017 13:43:34</publishTime>
+    </File>
+    <File Include="Content/Wiki/125.png">
+      <publishTime>08/06/2017 13:43:36</publishTime>
+    </File>
+    <File Include="Content/Wiki/126.png">
+      <publishTime>08/06/2017 13:43:38</publishTime>
+    </File>
+    <File Include="Content/Wiki/127.png">
+      <publishTime>08/06/2017 13:43:39</publishTime>
+    </File>
+    <File Include="Content/Wiki/128.png">
+      <publishTime>08/06/2017 13:43:41</publishTime>
+    </File>
+    <File Include="Content/Wiki/129.png">
+      <publishTime>08/06/2017 13:43:43</publishTime>
+    </File>
+    <File Include="Content/Wiki/13.png">
+      <publishTime>08/06/2017 13:12:01</publishTime>
+    </File>
+    <File Include="Content/Wiki/130.png">
+      <publishTime>08/06/2017 13:43:45</publishTime>
+    </File>
+    <File Include="Content/Wiki/131.png">
+      <publishTime>08/06/2017 13:43:47</publishTime>
+    </File>
+    <File Include="Content/Wiki/132.png">
+      <publishTime>08/06/2017 13:43:49</publishTime>
+    </File>
+    <File Include="Content/Wiki/133.png">
+      <publishTime>08/06/2017 13:43:50</publishTime>
+    </File>
+    <File Include="Content/Wiki/134.png">
+      <publishTime>08/06/2017 13:43:52</publishTime>
+    </File>
+    <File Include="Content/Wiki/135.png">
+      <publishTime>08/06/2017 13:43:54</publishTime>
+    </File>
+    <File Include="Content/Wiki/136.png">
+      <publishTime>08/06/2017 13:43:56</publishTime>
+    </File>
+    <File Include="Content/Wiki/137.png">
+      <publishTime>08/06/2017 13:43:57</publishTime>
+    </File>
+    <File Include="Content/Wiki/138.png">
+      <publishTime>08/06/2017 13:43:59</publishTime>
+    </File>
+    <File Include="Content/Wiki/139.png">
+      <publishTime>08/06/2017 13:44:01</publishTime>
+    </File>
+    <File Include="Content/Wiki/14.png">
+      <publishTime>08/06/2017 13:12:02</publishTime>
+    </File>
+    <File Include="Content/Wiki/140.png">
+      <publishTime>08/06/2017 13:44:03</publishTime>
+    </File>
+    <File Include="Content/Wiki/141.png">
+      <publishTime>08/06/2017 13:44:05</publishTime>
+    </File>
+    <File Include="Content/Wiki/142.png">
+      <publishTime>08/06/2017 13:44:06</publishTime>
+    </File>
+    <File Include="Content/Wiki/143.png">
+      <publishTime>08/06/2017 13:44:08</publishTime>
+    </File>
+    <File Include="Content/Wiki/144.png">
+      <publishTime>08/06/2017 13:44:10</publishTime>
+    </File>
+    <File Include="Content/Wiki/145.png">
+      <publishTime>08/06/2017 13:44:12</publishTime>
+    </File>
+    <File Include="Content/Wiki/146.png">
+      <publishTime>08/06/2017 13:44:14</publishTime>
+    </File>
+    <File Include="Content/Wiki/147.png">
+      <publishTime>08/06/2017 13:44:16</publishTime>
+    </File>
+    <File Include="Content/Wiki/148.png">
+      <publishTime>08/06/2017 13:44:17</publishTime>
+    </File>
+    <File Include="Content/Wiki/149.png">
+      <publishTime>08/06/2017 13:44:19</publishTime>
+    </File>
+    <File Include="Content/Wiki/15.png">
+      <publishTime>08/06/2017 13:12:02</publishTime>
+    </File>
+    <File Include="Content/Wiki/150.png">
+      <publishTime>08/06/2017 13:44:21</publishTime>
+    </File>
+    <File Include="Content/Wiki/151.png">
+      <publishTime>08/06/2017 13:44:23</publishTime>
+    </File>
+    <File Include="Content/Wiki/152.png">
+      <publishTime>08/06/2017 13:44:25</publishTime>
+    </File>
+    <File Include="Content/Wiki/153.png">
+      <publishTime>08/06/2017 13:44:26</publishTime>
+    </File>
+    <File Include="Content/Wiki/154.png">
+      <publishTime>08/06/2017 13:44:28</publishTime>
+    </File>
+    <File Include="Content/Wiki/155.png">
+      <publishTime>08/06/2017 13:44:30</publishTime>
+    </File>
+    <File Include="Content/Wiki/156.png">
+      <publishTime>08/06/2017 13:44:32</publishTime>
+    </File>
+    <File Include="Content/Wiki/157.png">
+      <publishTime>08/06/2017 13:44:34</publishTime>
+    </File>
+    <File Include="Content/Wiki/158.png">
+      <publishTime>08/06/2017 13:44:36</publishTime>
+    </File>
+    <File Include="Content/Wiki/159.png">
+      <publishTime>08/06/2017 13:44:37</publishTime>
+    </File>
+    <File Include="Content/Wiki/16.png">
+      <publishTime>08/06/2017 13:12:03</publishTime>
+    </File>
+    <File Include="Content/Wiki/160.png">
+      <publishTime>08/06/2017 13:44:39</publishTime>
+    </File>
+    <File Include="Content/Wiki/161.png">
+      <publishTime>08/06/2017 13:44:41</publishTime>
+    </File>
+    <File Include="Content/Wiki/162.png">
+      <publishTime>08/06/2017 13:44:43</publishTime>
+    </File>
+    <File Include="Content/Wiki/17.png">
+      <publishTime>08/06/2017 13:12:04</publishTime>
+    </File>
+    <File Include="Content/Wiki/18.png">
+      <publishTime>08/06/2017 13:12:04</publishTime>
+    </File>
+    <File Include="Content/Wiki/19.png">
+      <publishTime>08/06/2017 13:12:05</publishTime>
+    </File>
+    <File Include="Content/Wiki/2.png">
+      <publishTime>08/06/2017 13:11:54</publishTime>
+    </File>
+    <File Include="Content/Wiki/20.png">
+      <publishTime>08/06/2017 13:12:06</publishTime>
+    </File>
+    <File Include="Content/Wiki/21.png">
+      <publishTime>08/06/2017 13:12:06</publishTime>
+    </File>
+    <File Include="Content/Wiki/22.png">
+      <publishTime>08/06/2017 13:12:07</publishTime>
+    </File>
+    <File Include="Content/Wiki/23.png">
+      <publishTime>08/06/2017 13:12:08</publishTime>
+    </File>
+    <File Include="Content/Wiki/24.png">
+      <publishTime>08/06/2017 13:12:09</publishTime>
+    </File>
+    <File Include="Content/Wiki/25.png">
+      <publishTime>08/06/2017 13:12:10</publishTime>
+    </File>
+    <File Include="Content/Wiki/26.png">
+      <publishTime>08/06/2017 13:12:11</publishTime>
+    </File>
+    <File Include="Content/Wiki/27.png">
+      <publishTime>08/06/2017 13:12:12</publishTime>
+    </File>
+    <File Include="Content/Wiki/28.png">
+      <publishTime>08/06/2017 13:12:12</publishTime>
+    </File>
+    <File Include="Content/Wiki/29.png">
+      <publishTime>08/06/2017 13:12:13</publishTime>
+    </File>
+    <File Include="Content/Wiki/3.png">
+      <publishTime>08/06/2017 13:11:55</publishTime>
+    </File>
+    <File Include="Content/Wiki/30.png">
+      <publishTime>08/06/2017 13:12:14</publishTime>
+    </File>
+    <File Include="Content/Wiki/31.png">
+      <publishTime>08/06/2017 13:12:14</publishTime>
+    </File>
+    <File Include="Content/Wiki/32.png">
+      <publishTime>08/06/2017 13:12:15</publishTime>
+    </File>
+    <File Include="Content/Wiki/33.png">
+      <publishTime>08/06/2017 13:12:16</publishTime>
+    </File>
+    <File Include="Content/Wiki/34.png">
+      <publishTime>08/06/2017 13:12:17</publishTime>
+    </File>
+    <File Include="Content/Wiki/35.png">
+      <publishTime>08/06/2017 13:12:17</publishTime>
+    </File>
+    <File Include="Content/Wiki/36.png">
+      <publishTime>08/06/2017 13:12:18</publishTime>
+    </File>
+    <File Include="Content/Wiki/37.png">
+      <publishTime>08/06/2017 13:12:19</publishTime>
+    </File>
+    <File Include="Content/Wiki/38.png">
+      <publishTime>08/06/2017 13:12:19</publishTime>
+    </File>
+    <File Include="Content/Wiki/39.png">
+      <publishTime>08/06/2017 13:12:20</publishTime>
+    </File>
+    <File Include="Content/Wiki/4.png">
+      <publishTime>08/06/2017 13:11:55</publishTime>
+    </File>
+    <File Include="Content/Wiki/40.png">
+      <publishTime>08/06/2017 13:12:21</publishTime>
+    </File>
+    <File Include="Content/Wiki/41.png">
+      <publishTime>08/06/2017 13:12:21</publishTime>
+    </File>
+    <File Include="Content/Wiki/42.png">
+      <publishTime>08/06/2017 13:12:22</publishTime>
+    </File>
+    <File Include="Content/Wiki/43.png">
+      <publishTime>08/06/2017 13:12:23</publishTime>
+    </File>
+    <File Include="Content/Wiki/44.png">
+      <publishTime>08/06/2017 13:12:23</publishTime>
+    </File>
+    <File Include="Content/Wiki/45.png">
+      <publishTime>08/06/2017 13:12:24</publishTime>
+    </File>
+    <File Include="Content/Wiki/46.png">
+      <publishTime>08/06/2017 13:12:25</publishTime>
+    </File>
+    <File Include="Content/Wiki/47.png">
+      <publishTime>08/06/2017 13:12:26</publishTime>
+    </File>
+    <File Include="Content/Wiki/48.png">
+      <publishTime>08/06/2017 13:12:26</publishTime>
+    </File>
+    <File Include="Content/Wiki/49.png">
+      <publishTime>08/06/2017 13:12:27</publishTime>
+    </File>
+    <File Include="Content/Wiki/5.png">
+      <publishTime>08/06/2017 13:11:56</publishTime>
+    </File>
+    <File Include="Content/Wiki/50.png">
+      <publishTime>08/06/2017 13:12:29</publishTime>
+    </File>
+    <File Include="Content/Wiki/51.png">
+      <publishTime>08/06/2017 13:42:21</publishTime>
+    </File>
+    <File Include="Content/Wiki/52.png">
+      <publishTime>08/06/2017 13:42:22</publishTime>
+    </File>
+    <File Include="Content/Wiki/53.png">
+      <publishTime>08/06/2017 13:42:23</publishTime>
+    </File>
+    <File Include="Content/Wiki/54.png">
+      <publishTime>08/06/2017 13:42:23</publishTime>
+    </File>
+    <File Include="Content/Wiki/55.png">
+      <publishTime>08/06/2017 13:42:24</publishTime>
+    </File>
+    <File Include="Content/Wiki/56.png">
+      <publishTime>08/06/2017 13:42:24</publishTime>
+    </File>
+    <File Include="Content/Wiki/57.png">
+      <publishTime>08/06/2017 13:42:25</publishTime>
+    </File>
+    <File Include="Content/Wiki/58.png">
+      <publishTime>08/06/2017 13:42:25</publishTime>
+    </File>
+    <File Include="Content/Wiki/59.png">
+      <publishTime>08/06/2017 13:42:26</publishTime>
+    </File>
+    <File Include="Content/Wiki/6.png">
+      <publishTime>08/06/2017 13:11:57</publishTime>
+    </File>
+    <File Include="Content/Wiki/60.png">
+      <publishTime>08/06/2017 13:42:27</publishTime>
+    </File>
+    <File Include="Content/Wiki/61.png">
+      <publishTime>08/06/2017 13:42:27</publishTime>
+    </File>
+    <File Include="Content/Wiki/62.png">
+      <publishTime>08/06/2017 13:42:28</publishTime>
+    </File>
+    <File Include="Content/Wiki/63.png">
+      <publishTime>08/06/2017 13:42:28</publishTime>
+    </File>
+    <File Include="Content/Wiki/64.png">
+      <publishTime>08/06/2017 13:42:29</publishTime>
+    </File>
+    <File Include="Content/Wiki/65.png">
+      <publishTime>08/06/2017 13:42:29</publishTime>
+    </File>
+    <File Include="Content/Wiki/66.png">
+      <publishTime>08/06/2017 13:42:30</publishTime>
+    </File>
+    <File Include="Content/Wiki/67.png">
+      <publishTime>08/06/2017 13:42:30</publishTime>
+    </File>
+    <File Include="Content/Wiki/68.png">
+      <publishTime>08/06/2017 13:42:31</publishTime>
+    </File>
+    <File Include="Content/Wiki/69.png">
+      <publishTime>08/06/2017 13:42:32</publishTime>
+    </File>
+    <File Include="Content/Wiki/7.png">
+      <publishTime>08/06/2017 13:11:57</publishTime>
+    </File>
+    <File Include="Content/Wiki/70.png">
+      <publishTime>08/06/2017 13:42:33</publishTime>
+    </File>
+    <File Include="Content/Wiki/71.png">
+      <publishTime>08/06/2017 13:42:33</publishTime>
+    </File>
+    <File Include="Content/Wiki/72.png">
+      <publishTime>08/06/2017 13:42:34</publishTime>
+    </File>
+    <File Include="Content/Wiki/73.png">
+      <publishTime>08/06/2017 13:42:34</publishTime>
+    </File>
+    <File Include="Content/Wiki/74.png">
+      <publishTime>08/06/2017 13:42:35</publishTime>
+    </File>
+    <File Include="Content/Wiki/75.png">
+      <publishTime>08/06/2017 13:42:35</publishTime>
+    </File>
+    <File Include="Content/Wiki/76.png">
+      <publishTime>08/06/2017 13:42:36</publishTime>
+    </File>
+    <File Include="Content/Wiki/77.png">
+      <publishTime>08/06/2017 13:42:36</publishTime>
+    </File>
+    <File Include="Content/Wiki/78.png">
+      <publishTime>08/06/2017 13:42:37</publishTime>
+    </File>
+    <File Include="Content/Wiki/79.png">
+      <publishTime>08/06/2017 13:42:38</publishTime>
+    </File>
+    <File Include="Content/Wiki/8.png">
+      <publishTime>08/06/2017 13:11:58</publishTime>
+    </File>
+    <File Include="Content/Wiki/80.png">
+      <publishTime>08/06/2017 13:42:38</publishTime>
+    </File>
+    <File Include="Content/Wiki/81.png">
+      <publishTime>08/06/2017 13:42:39</publishTime>
+    </File>
+    <File Include="Content/Wiki/82.png">
+      <publishTime>08/06/2017 13:42:39</publishTime>
+    </File>
+    <File Include="Content/Wiki/83.png">
+      <publishTime>08/06/2017 13:42:40</publishTime>
+    </File>
+    <File Include="Content/Wiki/84.png">
+      <publishTime>08/06/2017 13:42:40</publishTime>
+    </File>
+    <File Include="Content/Wiki/85.png">
+      <publishTime>08/06/2017 13:42:41</publishTime>
+    </File>
+    <File Include="Content/Wiki/86.png">
+      <publishTime>08/06/2017 13:42:42</publishTime>
+    </File>
+    <File Include="Content/Wiki/87.png">
+      <publishTime>08/06/2017 13:42:42</publishTime>
+    </File>
+    <File Include="Content/Wiki/88.png">
+      <publishTime>08/06/2017 13:42:43</publishTime>
+    </File>
+    <File Include="Content/Wiki/89.png">
+      <publishTime>08/06/2017 13:42:43</publishTime>
+    </File>
+    <File Include="Content/Wiki/9.png">
+      <publishTime>08/06/2017 13:11:58</publishTime>
+    </File>
+    <File Include="Content/Wiki/90.png">
+      <publishTime>08/06/2017 13:42:44</publishTime>
+    </File>
+    <File Include="Content/Wiki/91.png">
+      <publishTime>08/06/2017 13:42:44</publishTime>
+    </File>
+    <File Include="Content/Wiki/92.png">
+      <publishTime>08/06/2017 13:42:45</publishTime>
+    </File>
+    <File Include="Content/Wiki/93.png">
+      <publishTime>08/06/2017 13:42:46</publishTime>
+    </File>
+    <File Include="Content/Wiki/94.png">
+      <publishTime>08/06/2017 13:42:46</publishTime>
+    </File>
+    <File Include="Content/Wiki/95.png">
+      <publishTime>08/06/2017 13:42:47</publishTime>
+    </File>
+    <File Include="Content/Wiki/96.png">
+      <publishTime>08/06/2017 13:42:47</publishTime>
+    </File>
+    <File Include="Content/Wiki/97.png">
+      <publishTime>08/06/2017 13:42:48</publishTime>
+    </File>
+    <File Include="Content/Wiki/98.png">
+      <publishTime>08/06/2017 13:42:49</publishTime>
+    </File>
+    <File Include="Content/Wiki/99.png">
+      <publishTime>08/06/2017 13:42:49</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>08/04/2017 17:46:23</publishTime>
+    </File>
+    <File Include="fonts/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff">
+      <publishTime>08/06/2017 16:28:24</publishTime>
+    </File>
+    <File Include="fonts/d-6IYplOFocCacKzxwXSOLO3LdcAZYWl9Si6vvxL-qU.woff">
+      <publishTime>08/06/2017 16:28:24</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>08/06/2017 16:28:26</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>08/06/2017 16:28:26</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>08/06/2017 16:28:26</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>08/06/2017 16:28:26</publishTime>
+    </File>
+    <File Include="fonts/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff">
+      <publishTime>08/06/2017 16:28:26</publishTime>
+    </File>
+    <File Include="fonts/MaterialIcons-Regular.eot">
+      <publishTime>08/07/2017 16:53:26</publishTime>
+    </File>
+    <File Include="fonts/MaterialIcons-Regular.svg">
+      <publishTime>08/07/2017 16:53:26</publishTime>
+    </File>
+    <File Include="fonts/MaterialIcons-Regular.ttf">
+      <publishTime>08/07/2017 16:53:26</publishTime>
+    </File>
+    <File Include="fonts/MaterialIcons-Regular.woff">
+      <publishTime>08/07/2017 16:53:26</publishTime>
+    </File>
+    <File Include="fonts/MaterialIcons-Regular.woff2">
+      <publishTime>08/07/2017 16:53:26</publishTime>
+    </File>
+    <File Include="fonts/RxZJdnzeo3R5zSexge8UUbO3LdcAZYWl9Si6vvxL-qU.woff">
+      <publishTime>08/06/2017 16:28:26</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/04/2017 17:46:23</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>08/04/2017 17:46:39</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>08/04/2017 17:46:28</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>08/04/2017 17:46:28</publishTime>
+    </File>
+    <File Include="Scripts/framework7.js">
+      <publishTime>08/10/2017 09:17:33</publishTime>
+    </File>
+    <File Include="Scripts/framework7.min.js">
+      <publishTime>08/07/2017 16:51:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>08/04/2017 17:46:29</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>08/04/2017 17:46:29</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>08/04/2017 17:46:29</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-i18n.js">
+      <publishTime>08/09/2017 17:10:40</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui.js">
+      <publishTime>08/09/2017 17:13:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>08/04/2017 17:46:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>08/04/2017 17:46:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>08/04/2017 17:46:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>08/04/2017 17:46:33</publishTime>
+    </File>
+    <File Include="Scripts/jsre/core/action.js">
+      <publishTime>07/04/2017 17:22:12</publishTime>
+    </File>
+    <File Include="Scripts/jsre/core/event.js">
+      <publishTime>06/15/2017 14:09:58</publishTime>
+    </File>
+    <File Include="Scripts/jsre/init.js">
+      <publishTime>06/15/2017 14:16:46</publishTime>
+    </File>
+    <File Include="Scripts/jsre/lib/dat.gui.js">
+      <publishTime>08/08/2017 09:18:14</publishTime>
+    </File>
+    <File Include="Scripts/jsre/lib/jquery.1.7.js">
+      <publishTime>08/05/2017 00:34:30</publishTime>
+    </File>
+    <File Include="Scripts/jsre/lib/jquery.easing.1.3.js">
+      <publishTime>08/08/2017 13:37:03</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>08/04/2017 17:46:32</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>08/04/2017 17:46:33</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>08/04/2017 17:46:33</publishTime>
+    </File>
+    <File Include="Scripts/tabulator.js">
+      <publishTime>08/09/2017 15:52:59</publishTime>
+    </File>
+    <File Include="Views/FeaTeam/Index.cshtml">
+      <publishTime>08/09/2017 00:26:03</publishTime>
+    </File>
+    <File Include="Views/FehTeam/F7Check.cshtml">
+      <publishTime>08/09/2017 14:47:06</publishTime>
+    </File>
+    <File Include="Views/FehTeam/Index.cshtml">
+      <publishTime>08/11/2017 10:20:19</publishTime>
+    </File>
+    <File Include="Views/FehTeam/Report.cshtml">
+      <publishTime>08/11/2017 10:21:05</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>08/09/2017 00:44:48</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>08/04/2017 17:46:23</publishTime>
+    </File>
+    <File Include="Views/Shared/HeroContainer.cshtml">
+      <publishTime>08/10/2017 22:07:49</publishTime>
+    </File>
+    <File Include="Views/Shared/MoveContainer.cshtml">
+      <publishTime>08/10/2017 12:31:44</publishTime>
+    </File>
+    <File Include="Views/Shared/MyInit.cshtml">
+      <publishTime>08/09/2017 16:20:10</publishTime>
+    </File>
+    <File Include="Views/Shared/MyJs.cshtml">
+      <publishTime>08/11/2017 10:20:36</publishTime>
+    </File>
+    <File Include="Views/Shared/MyT7.cshtml">
+      <publishTime>08/11/2017 10:17:57</publishTime>
+    </File>
+    <File Include="Views/Shared/WeaponContainer.cshtml">
+      <publishTime>08/10/2017 12:30:48</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>08/06/2017 16:24:40</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>08/04/2017 17:46:23</publishTime>
+    </File>
+    <File Include="Views/YuTuApi/Index.cshtml">
+      <publishTime>08/09/2017 11:18:04</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>08/04/2017 17:46:23</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/09/2017 00:31:54</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

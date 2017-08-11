@@ -1,0 +1,390 @@
+﻿@{
+    ViewBag.Title = "FEH TEAM Report";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/css/f7")    
+    @Styles.Render("~/css/jqueryui")
+    @Styles.Render("~/css/tabulator")
+    <style type="text/css">
+        .icon-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tabulator .tabulator-row .tabulator-cell {
+            border-bottom: solid 1px #CCCCCC;
+        } 
+        .tabulator .unkown, .n3, .n4, .neut, p3, p4 {
+            background-color: #EEEEEE;
+        }
+        .tabulator .unkown {
+            background-color: #DDDDDD;
+        }
+        .tabulator .n3, .n4 { background-color: #F2DDDC; }
+        .tabulator .n4 {
+            color: #FF0000;
+        }
+        .tabulator .p3, .p4 { background-color: #EAF1DD; }
+        .tabulator .p4 {
+            color: #00B050;
+        }
+
+        .hero-icon {
+            width: 30px;
+            height: 30px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 5px;
+            margin: 0px;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .hero-icon-R3 {
+            background-color: rgba(184,115,51,0.5);
+        }
+
+        .hero-icon-R4 {
+            background-color: rgba(192, 192, 192,0.5);
+        }
+
+        .hero-icon-R5 {
+            background-color: rgba(255, 215, 0,0.5);
+        }
+
+        .hero-box {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-icon .top {
+            margin-right: 0px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            height: 12px;
+            font-size: 6pt;
+            color: #ffffff;
+            text-shadow: 1px 1px 1px black, 0 0 5px black, 0 0 5px black;
+        }
+
+        .hero-icon .bottom {
+            margin-left: 0px;
+            display: flex;
+            width: 100%;
+            height: 12px;
+            background-color: rgba(0,0,0,0);
+            color: #ffffff;
+            border-radius: 0px 0px 10px 10px;
+            font-size: 6pt;
+            font-weight: bold;
+            align-items: flex-start;
+            text-shadow: 1px 1px 1px black, 0 0 5px black, 0 0 5px black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel panel-right panel-reveal">
+        <div class="content-block" style="padding-bottom:20px">
+            <div class="data-filter">
+                @Html.Partial("WeaponContainer")
+                <br />
+                @Html.Partial("MoveContainer")
+                <br />
+                @Html.Partial("HeroContainer", fehteam.app.Bll.session.GetMyHeroes(Context))
+            </div>
+            <div class="hero-stats-change"></div>
+        </div>
+    </div>
+    <div class="views">
+        <div class="view view-main">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="left">
+                        <a href="/FehTeam" class="external link icon-only">
+                            <i class="material-icons color-white">arrow_back</i>
+                        </a>
+                    </div>
+                    <div class="right">
+                        <a href="#" class="open-panel link icon-only" onclick="showReportFilter()">
+                            <i class="material-icons color-white">filter_list</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="pages navbar-through toolbar-through">
+                <div data-page="index" class="page">
+                    <div class="page-content" style="background-color:#fafafa;">
+
+                        <div id="team-table" ></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <!-- Toolbar links -->
+                    <a href="#" class="link save">保存</a>
+                    <a href="#" class="link load">载入</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/jsre")
+    @Scripts.Render("~/script/f7")
+    @Scripts.Render("~/script/jqueryui")
+    @Scripts.Render("~/script/tabulator")
+
+    @Html.Partial("MyT7");
+    
+    @*T7 : HeroIcon*@
+    <script type="text/template7" id="HeroIcon">
+        <a href="#" class="link icon-only hero-box" onclick="open_mod_hero({{id}})">
+            <div class="hero-icon hero-icon-R{{R}}" style=" background-image:url(/Content/Wiki/{{H}}.png)">
+                <div class="top">{{js "this.P == 0 ? '' : '+' + this.P "}}</div>
+                <div class="bottom">{{L}}</div>
+            </div>
+        </a>
+    </script>
+    
+    @Html.Partial("MyJs");
+    
+    <script type="text/javascript">
+
+        //myApp.showIndicator();
+
+        var myReport = @Html.Raw(CML.ComUtility.ToJson(fehteam.app.Bll.session.GetTreArray(Context)));
+        var myReportFilter = { weapon: [], move: [], hero: [] };
+
+        myData = @Html.Raw(CML.ComUtility.ToJson(fehteam.app.Bll.session.GetUserData(Context)));
+
+        evLoad.bind("success", function (data) { window.location.href = "/FehTeam/Report"; }, "my");
+
+        var evModHeroes = new JSRE.core.action("/FehTeam/ReportModHero")
+            .bind("alert", function (msg) { myApp.alert(msg, "Error"); })
+            .bind("begin", function (data) { myApp.showIndicator(); })
+            .bind("complete", function (data) { myApp.hideIndicator(); })
+            .bind("success", function (data) {
+                myApp.closePanel();
+
+                var query;
+
+                query = myData.Team.filter(function (x) { return x.id == data.user.id; });
+                if (query.length > 0) {
+                    var n = myData.Team.indexOf(query[0]);
+                    myData.Team.splice(n, 1, data.user);
+                }
+
+                query = myReport.filter(function (x) { return x.id == data.report.Id; });
+                if (query.length > 0) {
+                    var n = myReport.indexOf(query[0]);
+                    $("#team-table").tabulator("updateData", [query[0]]);
+                }
+
+            });
+
+        function doFilter() {
+            $("#team-table").tabulator("clearFilter");
+
+            (function (wArray, mArray, hArray) {
+
+                if (wArray.length == 1 && mArray.length == 1) {
+                    $("[data-weapon!=" + wArray[0] + "]", $(".hero-filter-container")).hide();
+                    $("[data-move!=" + mArray[0] + "]", $(".hero-filter-container")).hide();
+                    $(".hero-filter-container").show();
+                }
+                else {
+                    hArray.splice(0, hArray.length);
+                    $(".hero-filter-container").hide();
+                }
+
+                $("#team-table").tabulator("setFilter", function (data) {
+                    if (hArray.length > 0) {
+                        if (hArray.indexOf(data.H) < 0)
+                            return false;
+                    }
+                    if (wArray.length > 0) {
+                        if (wArray.indexOf(data.W) < 0)
+                            return false;
+                    }
+                    if (mArray.length > 0) {
+                        if (mArray.indexOf(data.M) < 0)
+                            return false;
+                    }
+                    return true;
+                });
+
+            })(myReportFilter.weapon, myReportFilter.move, myReportFilter.hero);
+        }
+
+        $("#team-table").tabulator({
+            height: "95%",
+            fitColumns: true,
+            resizableColumns: false,
+            data: myReport, //set initial table data
+            columns: [
+                { title: "", field: "id", align: "center" },
+                {
+                    title: "",
+                    align: "center",
+                    field: "H",
+                    variableHieght: true,
+                    formatter: function (cell) {
+                        return Template7.templates.HeroIcon(cell.getData());
+                    }
+                },
+                //{ title: "R", field: "R", align: "center", editor: true },
+                //{ title: "Lv", field: "L", align: "center" },
+                //{
+                //    title: "+", field: "P", align: "center",
+                //    formatter: function (cell) {
+                //        var V = cell.getValue();
+                //        return (V == 0 ? "" : "+" + V);
+                //    }
+                //},
+                {
+                    title: "Max R Max Lv",
+                    align: "center",
+                    columns: [
+                        {
+                            title: "H",
+                            align: "center",
+                            field: "Hp.v",
+                            height: 35,
+                            formatter: function (cell) {
+                                var Obj = cell.getData().Hp;
+                                $(cell.getElement()).addClass(Obj.c);
+                                return Obj.n;
+                            }
+                        },
+                        {
+                            title: "A",
+                            align: "center",
+                            field: "Atk.v",
+                            formatter: function (cell) {
+                                var Obj = cell.getData().Atk;
+                                $(cell.getElement()).addClass(Obj.c);
+                                return Obj.n;
+                            }
+                        },
+                        {
+                            title: "S",
+                            align: "center",
+                            field: "Spd.v",
+                            formatter: function (cell) {
+                                var Obj = cell.getData().Spd;
+                                $(cell.getElement()).addClass(Obj.c);
+                                return Obj.n;
+                            }
+                        },
+                        {
+                            title: "D",
+                            align: "center",
+                            field: "Def.v",
+                            formatter: function (cell) {
+                                var Obj = cell.getData().Def;
+                                $(cell.getElement()).addClass(Obj.c);
+                                return Obj.n;
+                            }
+                        },
+                        {
+                            title: "R",
+                            align: "center",
+                            field: "Res.v",
+                            formatter: function (cell) {
+                                var Obj = cell.getData().Res;
+                                $(cell.getElement()).addClass(Obj.c);
+                                return Obj.n;
+                            }
+                        },
+                    ],
+                },
+            ],
+            rowFormatter: function (row, data) {
+
+            }
+        });
+
+        function updateFilter(array, name, ele) {
+            var value = $(ele).data().id;
+            var index = array.indexOf(value);
+            if (index < 0) {
+                $(ele).addClass(name + "-selected");
+                array.push(value);
+            }
+            else {
+                $(ele).removeClass(name + "-selected");
+                array.splice(index, 1);
+            }
+        }
+
+        function showHeroStatsChange() {
+            $(".data-filter").hide();
+            $(".hero-stats-change").show();
+        }
+
+        function showReportFilter() {
+            $(".data-filter").show();
+            $(".hero-stats-change").hide();
+        }
+
+        function open_mod_hero(id) {
+
+            fHS = getOriFHS();
+            fHS.conf.hasDel = false;
+
+            if (renderHeroStats(id)) {
+                myApp.openPanel("right");
+                showHeroStatsChange();
+                $(".panel-right").scrollTop(0);
+            }
+        }
+
+        $(".weapon").on("click", function (e) {
+            updateFilter(myReportFilter.weapon, "weapon", e.target);
+            doFilter();
+        });
+
+        $(".move").on("click", function (e) {
+            updateFilter(myReportFilter.move, "move", e.target);
+            doFilter();
+        });
+
+        $(".hero-filter-item").on("click", function (e) {
+            updateFilter(myReportFilter.hero, "hero-filter", e.target);
+            doFilter();
+        });
+
+    </script>
+
+    @Html.Partial("MyInit");
+    
+    <script type="text/javascript">
+
+        $(".hero-filter-container").hide();
+
+    </script>
+
+</body >
+</html >

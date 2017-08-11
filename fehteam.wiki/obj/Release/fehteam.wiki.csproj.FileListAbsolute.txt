@@ -1,0 +1,5 @@
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.wiki\bin\Release\fehteam.wiki.dll
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.wiki\bin\Release\fehteam.wiki.pdb
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.wiki\obj\Release\fehteam.wiki.csprojResolveAssemblyReference.cache
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.wiki\obj\Release\fehteam.wiki.dll
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.wiki\obj\Release\fehteam.wiki.pdb

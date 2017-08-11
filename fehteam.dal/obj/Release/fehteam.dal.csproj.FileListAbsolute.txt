@@ -1,0 +1,9 @@
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.dal\bin\Release\fehteam.dal.dll
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.dal\bin\Release\fehteam.dal.pdb
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.dal\bin\Release\CML.dll
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.dal\bin\Release\PMT.RE.dll
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.dal\bin\Release\CML.pdb
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.dal\bin\Release\PMT.RE.pdb
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.dal\obj\Release\fehteam.dal.csprojResolveAssemblyReference.cache
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.dal\obj\Release\fehteam.dal.dll
+D:\Work\[2017.8]FEHWiki\src\fehteam\fehteam.dal\obj\Release\fehteam.dal.pdb

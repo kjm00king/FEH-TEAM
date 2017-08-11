@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    @Scripts.Render("~/jsre")
+    <script type="text/javascript">
+        var urlWikiAsk = "https://feheroes.gamepedia.com/api.php?action=ask";
+
+        var queryHeroes = new JSRE.core.action(urlWikiAsk + "&query=[[Category:Heroes]]&format=json")
+            .bind("success", function (data) {
+                console.log(data);
+            });
+
+        queryHeroes.action();
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+D:\Work\(2017.3)同信&同测\src\Trust\CML\bin\Release\CML.dll
+D:\Work\(2017.3)同信&同测\src\Trust\CML\bin\Release\CML.pdb
+D:\Work\(2017.3)同信&同测\src\Trust\CML\obj\Release\CML.csprojResolveAssemblyReference.cache
+D:\Work\(2017.3)同信&同测\src\Trust\CML\obj\Release\CML.csproj.ResolveComReference.cache
+D:\Work\(2017.3)同信&同测\src\Trust\CML\obj\Release\CML.dll
+D:\Work\(2017.3)同信&同测\src\Trust\CML\obj\Release\CML.pdb

@@ -1,0 +1,245 @@
+﻿@*Framework7*@
+<script type="text/javascript">
+    // Initialize app
+    var myApp = new Framework7({
+        precompileTemplates: true,
+        modalTitle: 'Fhe Team',
+        material: true,
+    });
+
+    // If we need to use custom DOM library, let's save it to $$ variable:
+    var $$ = Dom7;
+
+    // Add view
+    var mainView = myApp.addView('.view-main', {});
+
+</script>
+
+<script type="text/javascript">
+
+    var mapHS = @Html.Raw(CML.ComUtility.ToJson(fehteam.app.Bll.webcache.wiki.stats));
+    var myData = { Team: {}};
+    var fHS = {};
+
+    function setTitle(key) { $("#title").text("@ViewBag.Title" + (key != "" ? "  (" + key + ")" : "")); }
+
+    var evSave = new JSRE.core.action("/FehTeam/Save")
+        .bind("success", function (data) { setTitle(data); myApp.alert("Your key is " + data, "Save Success"); })
+        .bind("alert", function (msg) { myApp.alert(msg, "Error"); })
+        .bind("begin", function (data) { myApp.showIndicator(); })
+        .bind("complete", function (data) { myApp.hideIndicator(); });
+
+    var evLoad = new JSRE.core.action("/FehTeam/Load")
+        .bind("success", function (data) { setTitle(data); })
+        .bind("alert", function (msg) { myApp.alert(msg, "Error"); })
+        .bind("begin", function (data) { myApp.showIndicator(); })
+        .bind("complete", function (data) { myApp.hideIndicator(); });
+
+    var evModHero = new JSRE.core.action("/FehTeam/ModHero")
+        .bind("alert", function (msg) { myApp.alert(msg, "Error"); })
+        .bind("begin", function (data) { myApp.showIndicator(); })
+        .bind("complete", function (data) { myApp.hideIndicator(); })
+        .bind("success", function (data) {
+            myApp.closePanel();
+            var query = myData.Team.filter(function (x) { return x.id == data.id; });
+            if (query.length > 0) {
+                var n = myData.Team.indexOf(query[0]);
+                myData.Team.splice(n, 1, data);
+            }
+        });
+
+    var evDelHero = new JSRE.core.action("/FehTeam/DelHero")
+        .bind("alert", function (msg) { myApp.alert(msg, "Error"); })
+        .bind("begin", function (data) { myApp.showIndicator(); })
+        .bind("complete", function (data) { myApp.hideIndicator(); })
+        .bind("success", function (data) {
+            myApp.closePanel();
+
+            var query = myData.Team.filter(function (x) { return x.id == data.id; });
+            if (query.length > 0) {
+                var n = myData.Team.indexOf(query[0]);
+                myData.Team.splice(n, 1);
+            }
+        });
+
+    function getOriFHS() {
+        return {
+            id: 0,
+            hid: 0,
+            tmp: [],
+            hasR3: 0,
+            hasR4: 0,
+            R: 5,
+            Lv: 1,
+            Equip: 1,
+            n: [],
+            z: [],
+            p: [],
+            data: [0, 0, 0, 0, 0],
+            Hr: "R3",
+            Hl: "Lv1",
+            Hp: "+0",
+            mod: "ADD|MOD",
+            minR: 3,
+            hasN: false,
+            hasP: false,
+            path: "",
+            conf: {
+                hasDel: true,
+            }
+        };
+    }
+
+    function computeFHS(flg) {
+        fHS.tmp = mapHS.filter(function (x) { return x.HeroId == fHS.hid; });
+        fHS.hasR3 = fHS.tmp.filter(function (x) { return x.Rarity == 3; }).length > 0;
+        fHS.hasR4 = fHS.tmp.filter(function (x) { return x.Rarity == 4; }).length > 0;
+        if (!fHS.hasR3) { fHS.minR = 4; }
+        if (!fHS.hasR4) { fHS.minR = 5; }
+
+        if (flg == "ADD-INIT") {
+            fHS.Hr = "R" + fHS.minR;
+            fHS.R = fHS.minR;
+        }
+
+        fHS.n = fHS.tmp.filter(function (x) { return x.Rarity == fHS.R && x.Level == fHS.Lv && x.Variation < 0; });
+        fHS.z = fHS.tmp.filter(function (x) { return x.Rarity == fHS.R && x.Level == fHS.Lv && x.Variation == 0; });
+        fHS.p = fHS.tmp.filter(function (x) { return x.Rarity == fHS.R && x.Level == fHS.Lv && x.Variation > 0; });
+
+        fHS.hasN = fHS.n.length > 0;
+        fHS.hasP = fHS.p.length > 0;
+        if (!fHS.hasN) { fHS.n = fHS.z; }
+        if (!fHS.hasP) { fHS.p = fHS.z; }
+        fHS.path = "M " + 50 + " " + (50 - 15 * fHS.data[0])
+            + "L " + (50 - Math.cos(Math.PI / 10) * 15 * fHS.data[1]) + " " + (50 - Math.sin(Math.PI / 10) * 15 * fHS.data[1])
+            + "L " + (50 - Math.sin(Math.PI / 5) * 15 * fHS.data[3]) + " " + (50 + Math.cos(Math.PI / 5) * 15 * fHS.data[3])
+            + "L " + (50 + Math.sin(Math.PI / 5) * 15 * fHS.data[4]) + " " + (50 + Math.cos(Math.PI / 5) * 15 * fHS.data[4])
+            + "L " + (50 + Math.cos(Math.PI / 10) * 15 * fHS.data[2]) + " " + (50 - Math.sin(Math.PI / 10) * 15 * fHS.data[2])
+            + "Z";
+    }
+
+    function renderFHS(flg) {
+
+        computeFHS(flg);
+
+        $(".hero-stats-change").html(Template7.templates.HeroEntityDetail(fHS));
+
+        $(".rarity > a").on("click", function (e) {
+            setFHSbyDOM();
+            fHS.R = $(e.target).data().v;
+            renderFHS();
+        });
+        $(".level > a").on("click", function (e) {
+            setFHSbyDOM();
+            fHS.Lv = $(e.target).data().v;
+            renderFHS();
+        });
+        $(".equipment > a").on("click", function (e) {
+            setFHSbyDOM();
+            fHS.Equip = $(e.target).data().v;
+            renderFHS();
+        });
+        $(".hp > a").on("click", function (e) {
+            fHS.data[0] = $(e.target).data().v;
+            setFHSbyDOM();
+            renderFHS();
+        });
+        $(".atk > a").on("click", function (e) {
+            fHS.data[1] = $(e.target).data().v;
+            setFHSbyDOM();
+            renderFHS();
+        });
+        $(".spd > a").on("click", function (e) {
+            fHS.data[2] = $(e.target).data().v;
+            setFHSbyDOM();
+            renderFHS();
+        });
+        $(".def > a").on("click", function (e) {
+            fHS.data[3] = $(e.target).data().v;
+            setFHSbyDOM();
+            renderFHS();
+        });
+        $(".res > a").on("click", function (e) {
+            fHS.data[4] = $(e.target).data().v;
+            setFHSbyDOM();
+            renderFHS();
+        });
+
+        var rValueArray = [];
+        for (var i = fHS.minR; i <= 5; i++) { rValueArray.push("R" + i); }
+        myApp.picker({ input: '#input_heros_rarity', value: [fHS.Hr], cols: [{ textAlign: 'center', values: rValueArray, width: "100%" }] });
+
+        var lValueArray = [];
+        for (var i = 40; i > 0; i--) { lValueArray.push("Lv" + i); }
+        myApp.picker({ input: '#input_heros_level', value: [fHS.Hl], cols: [{ textAlign: 'center', values: lValueArray, width: "100%" }] });
+
+        var pValueArray = [];
+        for (var i = 0; i <= 10; i++) { pValueArray.push("+" + i); }
+        myApp.picker({ input: '#input_heros_plus', value: [fHS.Hp], cols: [{ textAlign: 'center', values: pValueArray, width: "100%" }] });
+    }
+
+    function renderHeroStats(id) {
+
+        var query = myData.Team.filter(function (x) { return x.id == id; });
+        if (query.length > 0) {
+
+            fHS.mod = "MOD";
+            fHS.id = id;
+            fHS.hid = query[0].hid;
+            fHS.R = query[0].r;
+            fHS.Lv = query[0].lv;
+            fHS.Hr = query[0].hr;
+            fHS.Hl = query[0].hl;
+            fHS.Hp = query[0].hp;
+            fHS.data = JSON.parse(JSON.stringify(query[0].var));
+
+            renderFHS();
+            return true;
+        }
+        else {
+            myApp.alert("NO FOUND!", "Error");
+            return false;
+        }
+    }
+
+    function setFHSbyDOM() {
+        fHS.Hr = $('#input_heros_rarity').val();
+        fHS.Hl = $('#input_heros_level').val();
+        fHS.Hp = $('#input_heros_plus').val();
+    }
+
+    function getSubmitObj() {
+        return {
+            id: fHS.id,
+            hid: fHS.hid,
+            r: fHS.R,
+            lv: fHS.Lv,
+            var: fHS.data,
+            hr: fHS.Hr,
+            hl: fHS.Hl,
+            hp: fHS.Hp,
+        };
+    }
+
+    $(".save").on("click", function () { evSave.action(); });
+
+    $(".load").on("click", function () {
+        myApp.prompt('Please input your key', function (data) {
+            evLoad.post(data);
+        });
+    });
+
+    $(".external").on("click", function () { myApp.showIndicator(); });
+
+    function mod_hero() {
+        setFHSbyDOM();
+        evModHero.post(getSubmitObj());
+    }
+
+    function del_hero(id) {
+        myApp.confirm('Are you sure delete this hero?', function () {
+            evDelHero.post(id);
+        });
+    }
+
+</script>

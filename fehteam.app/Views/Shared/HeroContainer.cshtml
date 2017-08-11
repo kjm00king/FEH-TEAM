@@ -1,0 +1,38 @@
+﻿<style type="text/css">
+    .hero-filter-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .hero-filter-item {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 5px;
+        border-radius: 3px;
+        background-color: #dddddd;
+        border: solid 2px #dddddd;
+        transition: all 1s ease;
+    }
+
+    .hero-filter-selected {
+        border-color: #333333;
+        background-color: #ffffff;
+    }
+</style>
+<div class="hero-filter-container">
+    @{
+        foreach (fehteam.dal.Hero h in Model)
+        {
+            <div class="hero-filter-item"
+                 data-id="@h.Id"
+                 data-weapon="@h.WeaponClassId"
+                 data-move="@h.MoveTypeId"
+                 style="background-image:url('/Content/Wiki/@(h.Id).png')"></div>
+        }
+    }
+</div>

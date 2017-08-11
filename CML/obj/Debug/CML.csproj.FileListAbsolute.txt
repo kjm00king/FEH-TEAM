@@ -1,0 +1,11 @@
+D:\Work\(2017.3)同信&同测\src\Trust\CML\bin\Debug\CML.dll
+D:\Work\(2017.3)同信&同测\src\Trust\CML\bin\Debug\CML.pdb
+D:\Work\(2017.3)同信&同测\src\Trust\CML\obj\Debug\CML.csproj.ResolveComReference.cache
+D:\Work\(2017.3)同信&同测\src\Trust\CML\obj\Debug\CML.dll
+D:\Work\(2017.3)同信&同测\src\Trust\CML\obj\Debug\CML.pdb
+D:\Work\(2017.3)同信&同测\src\Trust\CML\obj\Debug\CML.csprojResolveAssemblyReference.cache
+D:\Work\[2017.8]FEHWiki\src\github\CML\bin\Debug\CML.dll
+D:\Work\[2017.8]FEHWiki\src\github\CML\bin\Debug\CML.pdb
+D:\Work\[2017.8]FEHWiki\src\github\CML\obj\Debug\CML.csproj.ResolveComReference.cache
+D:\Work\[2017.8]FEHWiki\src\github\CML\obj\Debug\CML.dll
+D:\Work\[2017.8]FEHWiki\src\github\CML\obj\Debug\CML.pdb

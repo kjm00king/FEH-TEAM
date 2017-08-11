@@ -1,0 +1,322 @@
+﻿@{
+    ViewBag.Title = "FEH TEAM";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/css/f7")
+    <style type="text/css">
+        .icon-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team-hero, .team-hero-add {
+            width: 50px;
+            height: 50px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 10px;
+            margin: 5px;
+            background-repeat: no-repeat;
+        }
+
+        .team-hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .team-hero-add {
+            border: dashed 2px #2196f3;
+            width: 46px;
+            height: 46px;
+            background-color: #EEEEEE;
+        }
+
+        .team-hero-R3 {
+            background-color: rgba(184,115,51,0.5);
+        }
+
+        .team-hero-R4 {
+            background-color: rgba(192, 192, 192,0.5);
+        }
+
+        .team-hero-R5 {
+            background-color: rgba(255, 215, 0,0.5);
+        }
+
+        .team-hero .top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+            .team-hero .top i {
+                font-size: 12pt;
+                background-color: #ffffff;
+                border-radius: 8px;
+            }
+
+        .team-hero .bottom {
+            display: flex;
+            width: 100%;
+            height: 12px;
+            background-color: rgba(0,0,0,0);
+            color: #ffffff;
+            border-radius: 0px 0px 10px 10px;
+            font-size: 8pt;
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 1px 1px 1px black, 0 0 5px black, 0 0 5px black;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-right panel-reveal">
+        <div class="content-block" style="padding-bottom:20px">
+            <div class="hero-filter">
+                @Html.Partial("WeaponContainer")
+                <br />
+                @Html.Partial("MoveContainer")
+                <br />
+                @Html.Partial("HeroContainer", fehteam.app.Bll.webcache.wiki.heroes)
+            </div>
+            <div class="hero-stats-change"></div>
+        </div>
+    </div>
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                    <div class="center sliding" id="title"></div>
+                    <div class="right">
+                        <!--
+                          Right link contains only icon - additional "icon-only" class
+                          Additional "open-panel" class tells app to open panel when we click on this link
+                        -->
+                        <a href="/FehTeam/Report" class="external link icon-only">
+                            <i class="material-icons color-white">view_list</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                    <!-- Scrollable page content -->
+                    <div class="page-content"  style="background-color:#fafafa;">
+
+                        <div style="display:flex; flex-wrap:wrap; padding:10px; margin-bottom:50px;">
+                            <a href="#" class="link icon-only" onclick="open_add_hero()" id="btnAddTeamHero">
+                                <div class="team-hero-add icon-btn">
+                                    <i class="material-icons">add_circle_outline</i>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Toolbar-->
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <!-- Toolbar links -->
+                    <a href="#" class="link save">保存</a>
+                    <a href="#" class="link load">载入</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/jsre")
+    @Scripts.Render("~/script/f7")
+
+    @Html.Partial("MyT7");
+
+    @*T7 : HeroEntity*@
+    <script type="text/template7" id="HeroEntity">
+        <a href="#" class=" link icon-only" onclick="open_mod_hero({{id}})">
+            <div class="team-hero team-hero-box-{{id}} team-hero-{{hr}}" style=" background-image:url(/Content/Wiki/{{hid}}.png)">
+                <div class="top">
+                    <div class="left">
+                        {{#if error}}<i class="material-icons color-red">error</i>{{/if}}
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <div class="bottom">{{hl}}</div>
+            </div>
+        </a>
+    </script>
+    
+    @Html.Partial("MyJs");
+
+    @*MyJs*@
+    <script type="text/javascript">
+        
+        var myData = { Team: [] };
+
+        var evGetHeroes = new JSRE.core.action("/FehTeam/GetHeroes")
+            .bind("success", function (data) { myData = data; renderTeamHeroes(); })
+            .bind("alert", function (msg) { myApp.alert(msg, "Error"); })
+            .bind("begin", function (data) { myApp.showIndicator(); })
+            .bind("complete", function (data) { myApp.hideIndicator(); });
+
+        var evAddHeroes = new JSRE.core.action("/FehTeam/AddHero")
+            .bind("success", function (data) { $("#btnAddTeamHero").before(htmlHeroEntity(data)); myData.Team.push(data); })
+            .bind("alert", function (msg) { myApp.alert(msg, "Error"); })
+            .bind("begin", function (data) { myApp.showIndicator(); })
+            .bind("complete", function (data) { myApp.hideIndicator(); });
+
+        evLoad.bind("success", function (data) { evGetHeroes.action(); }, "my");
+        //evLoad.bind("success", function (data) { window.location.href = "/FehTeam"; }, "my");
+
+        evModHero.bind("success", function (data) {
+            var dom = $(".team-hero-box-" + data.id);
+            dom.before(htmlHeroEntity(data));
+            dom.remove();
+        }, "my");
+        
+        evDelHero.bind("success", function (data) {
+            $(".team-hero-box-" + data.id).remove();
+        }, "my");
+
+        function open_add_hero() {
+            myApp.openPanel("right");
+            showHeroFilter();
+            $(".panel-right").scrollTop(0);
+        }
+
+        function open_mod_hero(id) {
+            fHS = getOriFHS();
+            if (renderHeroStats(id)) {
+                myApp.openPanel("right");
+                showHeroStatsChange();
+                $(".panel-right").scrollTop(0);
+            }
+        }
+
+        $(".weapon").on("click", function (e) {
+            select("weapon", e.target);
+            filterHeroes();
+        });
+
+        $(".move").on("click", function (e) {
+            select("move", e.target);
+            filterHeroes();
+        });
+
+        function select(name, ele) {
+
+                if ($("." + name + "-selected").length > 0 && $(ele).data().id == $("." + name + "-selected").data().id) {
+                $("." + name).removeClass(name + "-selected");
+            }
+            else {
+                $("." + name).removeClass(name + "-selected");
+                $(ele).addClass(name + "-selected");
+            }
+        }
+
+        function filterHeroes() {
+
+            if ($(".weapon-selected").length > 0) {
+                $("[data-weapon=" + $(".weapon-selected").data().id + "]", $(".hero-filter-container")).show();
+                $("[data-weapon!=" + $(".weapon-selected").data().id + "]", $(".hero-filter-container")).hide();
+            }
+            else {
+                $(".hero-filter-item").show();
+            }
+
+            if ($(".move-selected").length > 0) {
+                $("[data-move!=" + $(".move-selected").data().id + "]", $(".hero-filter-container")).hide();
+            }
+            $(".panel-right").css("display", "flex");   //IPHONE 会导致没有SCROLL
+        }
+
+        $(".hero-filter-item").on("click", function (e) {
+            showHeroStatsChange();
+
+            fHS = getOriFHS();
+
+            fHS.mod = "ADD";
+            fHS.hid = $(e.target).data().id;
+
+            renderFHS("ADD-INIT");
+        });
+
+        function renderTeamHeroes() {
+            $("#btnAddTeamHero").prevAll().remove();
+            $.each(myData.Team, function (i, v) {
+                $("#btnAddTeamHero").before(htmlHeroEntity(v));
+            });
+        }
+        
+        function showHeroStatsChange() {
+            $(".hero-filter").hide();
+            $(".hero-stats-change").show();
+        }
+
+        function showHeroFilter() {
+            $(".hero-filter").show();
+            $(".hero-stats-change").hide();
+        }
+
+        function htmlHeroEntity(data) {
+            //data.error = !checkVar(data.var);
+            return Template7.templates.HeroEntity(data);
+        }
+
+        //function checkVar(v) {
+        //    if (v.indexOf(0) >= 0)
+        //        return false;
+        //    else {
+        //        var n = v.filter(function (x) { return x == 1 }).length;
+        //        var p = v.filter(function (x) { return x == 3 }).length;
+        //        if (n > 1 || p > 1 || n != p)
+        //            return false;
+        //    }
+        //    return true;
+        //}
+
+        function add_hero() {
+            setFHSbyDOM();
+            evAddHeroes.post(getSubmitObj());
+            myApp.closePanel();
+        }
+
+    </script>
+
+    @Html.Partial("MyInit");
+
+    @*MyInit*@
+    <script type="text/javascript">
+        //renderTeamHeroes();
+        evGetHeroes.action();
+    </script>
+
+</body>
+</html>

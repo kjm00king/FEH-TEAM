@@ -1,0 +1,38 @@
+﻿<style type="text/css">
+    .weapon-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .weapon {
+        display: flex;
+        width: 30px;
+        height: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 5px;
+        border-radius: 3px;
+        background-color: #dddddd;
+        border: solid 2px #dddddd;
+        transition: all 1s ease;
+    }
+
+    .weapon-selected {
+        border-color: #333333;
+        background-color: #ffffff;
+    }
+</style>
+<div class="weapon-container">
+    @{
+        Dictionary<int, string> dictWeapon = fehteam.app.Bll.webcache.wiki.weaponclasses.ToDict();
+        int[] WeaponSort = new int[] { 2, 7, 12, 1, 6, 9, 3, 5, 10, 4, 8, 11 };
+        foreach (int i in WeaponSort)
+        {
+            if (dictWeapon.ContainsKey(i))
+            {
+                <div class="weapon" data-id="@i" style="background-image:url('/Content/Icons/Class @(dictWeapon[i]).png')"></div>
+            }
+        }
+    }
+</div>

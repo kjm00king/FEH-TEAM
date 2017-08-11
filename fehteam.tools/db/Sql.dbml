@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FehTeam" Class="SqlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SHAPMT-MWS-WEB1\SQLEXPRESS;Initial Catalog=FehTeam;Persist Security Info=True;User ID=sa" SettingsObjectName="fehteam.tools.Properties.Settings" SettingsPropertyName="FehTeamConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Hero" Member="Heros">
+    <Type Name="Hero">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="WeaponClass" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Move" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weapon" Member="Weapons">
+    <Type Name="Weapon">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Damage" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Effect" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Range" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsExclusive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HeroEntity" Member="HeroEntities">
+    <Type Name="HeroEntity">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hero" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rarity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Variation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ATK" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SPD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DEF" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RES" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="W_ATK" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="W_SPD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KVType" Member="KVTypes">
+    <Type Name="KVType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HeroDefWeapon" Member="HeroDefWeapons">
+    <Type Name="HeroDefWeapon">
+      <Column Name="Hero" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Rarity" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Weapon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KV" Member="KVs">
+    <Type Name="KV">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
